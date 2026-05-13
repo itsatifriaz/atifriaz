@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const roles = [
   "Lead Frontend Engineer",
@@ -20,7 +21,6 @@ function useTypingCycle(words: string[], speed = 60, pause = 2200) {
   useEffect(() => {
     const current = words[wordIdx];
     let timeout: ReturnType<typeof setTimeout>;
-
     if (!deleting && charIdx < current.length) {
       timeout = setTimeout(() => setCharIdx((c) => c + 1), speed + Math.random() * 20);
     } else if (!deleting && charIdx === current.length) {
@@ -31,7 +31,6 @@ function useTypingCycle(words: string[], speed = 60, pause = 2200) {
       setDeleting(false);
       setWordIdx((i) => (i + 1) % words.length);
     }
-
     setDisplayed(current.slice(0, charIdx));
     return () => clearTimeout(timeout);
   }, [charIdx, deleting, wordIdx, words, speed, pause]);
@@ -39,26 +38,18 @@ function useTypingCycle(words: string[], speed = 60, pause = 2200) {
   return displayed;
 }
 
-function FadeUp({
-  children,
-  delay = 0,
-  className,
-  style,
-  as = "div",
-}: {
+function FadeUp({ children, delay = 0, style, as = "div" }: {
   children: React.ReactNode;
   delay?: number;
-  className?: string;
   style?: React.CSSProperties;
-  as?: "div" | "p" | "h1" | "h2" | "span";
+  as?: "div" | "p" | "h1" | "span";
 }) {
   const Tag = motion[as] as React.ElementType;
   return (
     <Tag
       initial={{ opacity: 0, y: 22 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1], delay }}
-      className={className}
+      transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1], delay }}
       style={style}
     >
       {children}
@@ -73,223 +64,206 @@ export default function Hero() {
     <section
       id="home"
       className="min-h-screen flex flex-col justify-center relative overflow-hidden"
-      style={{ paddingTop: "5rem", paddingBottom: "4rem" }}
+      style={{ paddingTop: "5rem", paddingBottom: "6rem" }}
     >
-      {/* Subtle grid background */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-          opacity: 0.35,
-          pointerEvents: "none",
-        }}
-      />
-      {/* Radial fade overlay */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 40%, transparent 30%, var(--bg) 100%)",
-          pointerEvents: "none",
-        }}
-      />
+      {/* Grid bg */}
+      <div aria-hidden="true" style={{
+        position: "absolute", inset: 0,
+        backgroundImage: "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
+        backgroundSize: "60px 60px", opacity: 0.3, pointerEvents: "none",
+      }} />
+      {/* Vignette */}
+      <div aria-hidden="true" style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(ellipse 90% 70% at 40% 50%, transparent 20%, var(--bg) 100%)",
+        pointerEvents: "none",
+      }} />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* Availability badge */}
-        <FadeUp delay={0} style={{ marginBottom: "2.5rem" }}>
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.5rem",
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.6875rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--text-muted)",
-              background: "var(--bg-secondary)",
-              border: "1px solid var(--border)",
-              borderRadius: "20px",
-              padding: "0.35rem 0.9rem",
-            }}
-          >
-            <span
-              style={{
-                width: "6px",
-                height: "6px",
-                background: "var(--accent)",
-                borderRadius: "50%",
-                display: "inline-block",
-                boxShadow: "0 0 6px var(--accent)",
-                animation: "heroPulse 2s ease-in-out infinite",
-              }}
-            />
-            Open to Remote Opportunities
-          </span>
-        </FadeUp>
+      <div className="max-w-6xl mx-auto px-6 relative z-10 w-full hero-grid">
+        {/* LEFT: text */}
+        <div>
+          <FadeUp delay={0} style={{ marginBottom: "2rem" }}>
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: "0.5rem",
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.6875rem",
+              letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)",
+              background: "var(--bg-secondary)", border: "1px solid var(--border)",
+              borderRadius: "20px", padding: "0.35rem 0.9rem",
+            }}>
+              <span style={{
+                width: "6px", height: "6px", background: "var(--accent)",
+                borderRadius: "50%", display: "inline-block",
+                boxShadow: "0 0 6px var(--accent)", animation: "heroPulse 2s ease-in-out infinite",
+              }} />
+              Open to Remote Opportunities
+            </span>
+          </FadeUp>
 
-        {/* Animated role title */}
-        <FadeUp delay={0.1} style={{ marginBottom: "1.25rem" }}>
-          <div
-            style={{
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "var(--accent)",
-            }}
-          >
-            <span>{typed}</span>
-            <span
-              style={{
-                display: "inline-block",
-                width: "2px",
-                height: "0.85em",
-                background: "var(--accent)",
-                marginLeft: "2px",
-                verticalAlign: "middle",
+          <FadeUp delay={0.1} style={{ marginBottom: "1rem" }}>
+            <div style={{
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
+              letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "var(--accent)", minHeight: "1.2em",
+            }}>
+              <span>{typed}</span>
+              <span style={{
+                display: "inline-block", width: "2px", height: "0.85em",
+                background: "var(--accent)", marginLeft: "2px", verticalAlign: "middle",
                 animation: "heroBlink 1s step-end infinite",
+              }} />
+            </div>
+          </FadeUp>
+
+          <FadeUp delay={0.2} as="h1">
+            <h1 className="font-display" style={{
+              fontSize: "clamp(2.5rem, 5.5vw, 5.25rem)", lineHeight: 1.05,
+              fontWeight: 700, color: "var(--text)", marginBottom: "1.5rem",
+            }}>
+              <span style={{ display: "block" }}>Lead Frontend</span>
+              <span style={{ display: "block" }}>
+                Engineer.{" "}
+                <span style={{ fontWeight: 400, fontStyle: "italic", color: "var(--text-muted)" }}>
+                  Building
+                </span>
+              </span>
+              <span style={{ display: "block", color: "var(--accent)", fontStyle: "italic", fontWeight: 400 }}>
+                interfaces that scale.
+              </span>
+            </h1>
+          </FadeUp>
+
+          <FadeUp delay={0.35} as="p">
+            <p style={{
+              fontSize: "1rem", lineHeight: 1.7, color: "var(--text-muted)",
+              maxWidth: "480px", marginBottom: "2.5rem",
+            }}>
+              10+ years shipping high-traffic products at{" "}
+              <span style={{ color: "var(--text)" }}>Zameen.com</span> &amp;{" "}
+              <span style={{ color: "var(--text)" }}>Cityscape Technology, Canada</span>.
+            </p>
+          </FadeUp>
+
+          <FadeUp delay={0.5}>
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <a href="#work" className="btn-primary">
+                View My Work
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+              <a href="/resume.pdf" download className="btn-ghost">
+                Download Resume
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M7 1v8M3 9l4 4 4-4M1 13h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </FadeUp>
+        </div>
+
+        {/* RIGHT: photo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1], delay: 0.3 }}
+          style={{ position: "relative", display: "flex", justifyContent: "center" }}
+        >
+          {/* Green glow beneath photo */}
+          <div aria-hidden="true" style={{
+            position: "absolute", bottom: "-5%", left: "50%", transform: "translateX(-50%)",
+            width: "65%", height: "35%", background: "var(--accent)",
+            opacity: 0.07, filter: "blur(55px)", borderRadius: "50%", pointerEvents: "none",
+          }} />
+
+          {/* Accent left-edge line */}
+          <div aria-hidden="true" style={{
+            position: "absolute", left: 0, top: "8%", bottom: "8%", width: "2px",
+            background: "linear-gradient(to bottom, transparent, var(--accent), transparent)",
+            opacity: 0.4,
+          }} />
+
+          <div style={{
+            position: "relative", width: "100%", maxWidth: "420px",
+            aspectRatio: "3/4", overflow: "hidden",
+          }}>
+            <Image
+              src="/atif.jpg"
+              alt="Atif Riaz — Lead Frontend Engineer"
+              fill
+              priority
+              sizes="(max-width: 900px) 90vw, 420px"
+              style={{
+                objectFit: "cover",
+                objectPosition: "top center",
+                filter: "contrast(1.08) brightness(1.02) saturate(0.92)",
               }}
             />
+            {/* Fade bottom into page bg */}
+            <div aria-hidden="true" style={{
+              position: "absolute", bottom: 0, left: 0, right: 0, height: "32%",
+              background: "linear-gradient(to top, var(--bg) 0%, transparent 100%)",
+              pointerEvents: "none",
+            }} />
           </div>
-        </FadeUp>
 
-        {/* Main headline */}
-        <FadeUp delay={0.2} as="h1">
-          <h1
-            className="font-display"
+          {/* Floating name chip */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.0, duration: 0.5 }}
             style={{
-              fontSize: "clamp(2.75rem, 7vw, 6rem)",
-              lineHeight: 1.05,
-              fontWeight: 700,
-              color: "var(--text)",
-              marginBottom: "1.75rem",
-              maxWidth: "900px",
+              position: "absolute", bottom: "20%", right: "0",
+              background: "rgba(10,10,10,0.88)", border: "1px solid var(--border)",
+              borderRadius: "6px", padding: "0.6rem 0.9rem", backdropFilter: "blur(16px)",
             }}
           >
-            <span style={{ display: "block" }}>Frontend</span>
-            <span style={{ display: "block" }}>
-              Developer.{" "}
-              <span
-                style={{
-                  fontWeight: 400,
-                  fontStyle: "italic",
-                  color: "var(--text-muted)",
-                }}
-              >
-                Building
-              </span>
-            </span>
-            <span
-              style={{
-                display: "block",
-                color: "var(--accent)",
-                fontStyle: "italic",
-                fontWeight: 400,
-              }}
-            >
-              interfaces that scale.
-            </span>
-          </h1>
-        </FadeUp>
-
-        {/* Subtext */}
-        <FadeUp delay={0.35} as="p">
-          <p
-            style={{
-              fontSize: "1.0625rem",
-              lineHeight: 1.65,
-              color: "var(--text-muted)",
-              maxWidth: "540px",
-              marginBottom: "2.75rem",
-            }}
-          >
-            10+ years shipping high-traffic products at{" "}
-            <a href="https://www.zameen.com/" target="_blank"><span style={{ color: "var(--text)" }}>Zameen.com,</span></a> <a href="https://www.bayut.com/" target="_blank"><span style={{ color: "var(--text)" }}>Bayut.com,</span></a> &amp;{" "}
-            <a href="https://www.cityscapeone.com/" target="_blank">
-            <span style={{ color: "var(--text)" }}>
-              CityscapeOne.com
-            </span></a>
-            .
-          </p>
-        </FadeUp>
-
-        {/* CTAs */}
-        <FadeUp delay={0.5}>
-          <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <a href="#work" className="btn-primary">
-              View My Work
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path
-                  d="M1 7h12M7 1l6 6-6 6"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-            <a href="/resume.pdf" download className="btn-ghost">
-              Download Resume
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path
-                  d="M7 1v8M3 9l4 4 4-4M1 13h12"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </a>
-          </div>
-        </FadeUp>
-
+            <div style={{
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.6rem",
+              letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "var(--accent)", marginBottom: "0.2rem",
+            }}>
+              Atif Riaz
+            </div>
+            <div style={{
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.55rem",
+              letterSpacing: "0.08em", color: "var(--text-faint)",
+            }}>
+              Lead Frontend Engineer
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      {/* Scroll hint — pinned to section bottom center */}
+      {/* Scroll hint */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.6 }}
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 0.6 }}
         style={{
-          position: "absolute",
-          bottom: "2rem",
-          left: "50%",
-          transform: "translateX(-50%)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "0.4rem",
-          pointerEvents: "none",
+          position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)",
+          display: "flex", flexDirection: "column", alignItems: "center",
+          gap: "0.4rem", pointerEvents: "none",
         }}
       >
-        <span
-          style={{
-            fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: "0.6rem",
-            letterSpacing: "0.14em",
-            textTransform: "uppercase",
-            color: "var(--text-faint)",
-          }}
-        >
-          scroll
-        </span>
-        <div
-          style={{
-            width: "1px",
-            height: "40px",
-            background: "linear-gradient(to bottom, var(--text-faint), transparent)",
-          }}
-        />
+        <span style={{
+          fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.6rem",
+          letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-faint)",
+        }}>scroll</span>
+        <div style={{
+          width: "1px", height: "40px",
+          background: "linear-gradient(to bottom, var(--text-faint), transparent)",
+        }} />
       </motion.div>
 
       <style>{`
+        .hero-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 3rem;
+          align-items: center;
+        }
+        @media (min-width: 900px) {
+          .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+        }
         @keyframes heroBlink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
