@@ -173,9 +173,9 @@ export default function Hero() {
               maxWidth: "900px",
             }}
           >
-            <span style={{ display: "block" }}>Lead Frontend</span>
+            <span style={{ display: "block" }}>Frontend</span>
             <span style={{ display: "block" }}>
-              Engineer.{" "}
+              Developer.{" "}
               <span
                 style={{
                   fontWeight: 400,
@@ -211,10 +211,11 @@ export default function Hero() {
             }}
           >
             10+ years shipping high-traffic products at{" "}
-            <span style={{ color: "var(--text)" }}>Zameen.com</span> &amp;{" "}
+            <a href="https://www.zameen.com/" target="_blank"><span style={{ color: "var(--text)" }}>Zameen.com,</span></a> <a href="https://www.bayut.com/" target="_blank"><span style={{ color: "var(--text)" }}>Bayut.com,</span></a> &amp;{" "}
+            <a href="https://www.cityscapeone.com/" target="_blank">
             <span style={{ color: "var(--text)" }}>
-              Cityscape Technology, Canada
-            </span>
+              CityscapeOne.com
+            </span></a>
             .
           </p>
         </FadeUp>
