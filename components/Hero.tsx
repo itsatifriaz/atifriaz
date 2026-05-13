@@ -187,7 +187,7 @@ export default function Hero() {
             aspectRatio: "3/4", overflow: "hidden",
           }}>
             <Image
-              src="/atif.jpg"
+              src="/atifriaz.png"
               alt="Atif Riaz — Lead Frontend Engineer"
               fill
               priority
