@@ -121,54 +121,7 @@ export default function About() {
                 ✦ AI-Native Workflow
               </span>
             </div>
-          </motion.div>
-
-          {/* Right: Stats — bare numbers, no container */}
-          <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "3rem 2rem",
-              alignContent: "center",
-              background: "none",
-            }}
-          >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 16 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.25 + i * 0.08 }}
-              >
-                <div
-                  className="font-display"
-                  style={{
-                    fontSize: "clamp(2.25rem, 4vw, 3rem)",
-                    fontWeight: 700,
-                    color: "var(--accent)",
-                    lineHeight: 1,
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {stat.value}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "0.625rem",
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "var(--text-faint)",
-                  }}
-                >
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          </motion.div> 
         </div>
       </div>
     </section>
