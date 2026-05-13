@@ -123,7 +123,7 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right: Stats */}
+          {/* Right: Stats — bare numbers, no container */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
@@ -132,8 +132,8 @@ export default function About() {
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
               gap: "3rem 2rem",
-              alignContent: "start",
-              paddingTop: "4rem",
+              alignContent: "center",
+              background: "none",
             }}
           >
             {stats.map((stat, i) => (

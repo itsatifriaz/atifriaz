@@ -249,42 +249,44 @@ export default function Hero() {
           </div>
         </FadeUp>
 
-        {/* Scroll hint */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
+      </div>
+
+      {/* Scroll hint — pinned to section bottom center */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.6 }}
+        style={{
+          position: "absolute",
+          bottom: "2rem",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.4rem",
+          pointerEvents: "none",
+        }}
+      >
+        <span
           style={{
-            position: "absolute",
-            bottom: "-3rem",
-            left: "50%",
-            transform: "translateX(-50%)",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "0.35rem",
+            fontFamily: "var(--font-jetbrains), monospace",
+            fontSize: "0.6rem",
+            letterSpacing: "0.14em",
+            textTransform: "uppercase",
+            color: "var(--text-faint)",
           }}
         >
-          <span
-            style={{
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.625rem",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: "var(--text-faint)",
-            }}
-          >
-            scroll
-          </span>
-          <div
-            style={{
-              width: "1px",
-              height: "36px",
-              background: "linear-gradient(to bottom, var(--text-faint), transparent)",
-            }}
-          />
-        </motion.div>
-      </div>
+          scroll
+        </span>
+        <div
+          style={{
+            width: "1px",
+            height: "40px",
+            background: "linear-gradient(to bottom, var(--text-faint), transparent)",
+          }}
+        />
+      </motion.div>
 
       <style>{`
         @keyframes heroBlink {
