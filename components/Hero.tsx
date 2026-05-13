@@ -120,9 +120,9 @@ export default function Hero() {
               fontSize: "clamp(2.5rem, 4.5vw, 5.25rem)", lineHeight: 1.05,
               fontWeight: 700, color: "var(--text)", marginBottom: "1.5rem",
             }}>
-              <span style={{ display: "block" }}>Lead Frontend</span>
+              <span style={{ display: "block" }}>Frontend</span>
               <span style={{ display: "block" }}>
-                Engineer.{" "}
+                Developer.{" "}
                 <span style={{ fontWeight: 400, fontStyle: "italic", color: "var(--text-muted)" }}>
                   Building
                 </span>
