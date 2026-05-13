@@ -78,10 +78,10 @@ export default function Hero() {
         pointerEvents: "none",
       }} />
 
-      {/* ── Full-bleed hero layout ── */}
-      <div className="hero-inner">
+      {/* ── Fixed-width container — aligned with all other sections ── */}
+      <div className="max-w-6xl mx-auto px-6 w-full relative z-10 hero-inner">
 
-        {/* LEFT: text column — constrained, padded */}
+        {/* LEFT: text column */}
         <div className="hero-text">
           <FadeUp delay={0} style={{ marginBottom: "2rem" }}>
             <span style={{
@@ -219,8 +219,8 @@ export default function Hero() {
             transition={{ delay: 1.1, duration: 0.5 }}
             style={{
               position: "absolute",
-              bottom: "38%",
-              left: "2rem",
+              bottom: "35%",
+              right: "1rem",
               background: "rgba(10,10,10,0.82)",
               border: "1px solid var(--border)",
               borderRadius: "6px",
@@ -279,20 +279,17 @@ export default function Hero() {
           padding-bottom: 6rem;
         }
 
-        /* ── Full-bleed two-column inner ── */
+        /* ── Two-column grid inside fixed container ── */
         .hero-inner {
-          position: relative;
-          z-index: 10;
-          width: 100%;
           display: grid;
           grid-template-columns: 1fr;
+          gap: 2rem;
           align-items: center;
-          min-height: calc(100svh - 11rem);
         }
 
         /* ── Text column ── */
         .hero-text {
-          padding: 0 clamp(1.5rem, 5vw, 5rem);
+          /* inherits container padding */
         }
 
         /* ── Photo column ── */
@@ -319,39 +316,25 @@ export default function Hero() {
           z-index: 0;
         }
 
-        /* ── Desktop: side-by-side, photo bleeds to viewport right ── */
+        /* ── Desktop: side-by-side, equal columns ── */
         @media (min-width: 900px) {
           .hero-inner {
-            grid-template-columns: 55fr 45fr;
-          }
-
-          .hero-photo-col {
-            /* Extend past the grid's right gutter to hug the viewport edge */
-            margin-right: calc(-1 * (100vw - 100%) / 2);
-            padding-right: 0;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
           }
 
           .hero-photo-wrap {
             aspect-ratio: unset;
-            height: min(90vh, 860px);
-            min-height: 500px;
+            height: min(80vh, 700px);
+            min-height: 480px;
           }
         }
 
-        /* ── Mobile: photo below text, nice square ── */
+        /* ── Mobile: stacked ── */
         @media (max-width: 899px) {
-          .hero-text {
-            padding: 0 1.5rem;
-            padding-bottom: 0;
-          }
-
-          .hero-photo-col {
-            padding: 0 1.5rem 0 1.5rem;
-          }
-
           .hero-photo-wrap {
             aspect-ratio: 1 / 1;
-            max-width: 480px;
+            max-width: 420px;
             margin: 0 auto;
           }
         }
