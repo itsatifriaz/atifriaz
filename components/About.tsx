@@ -123,145 +123,51 @@ export default function About() {
             </div>
           </motion.div>
 
-          {/* Right: Visual + Stats */}
+          {/* Right: Stats */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
-            style={{ display: "flex", flexDirection: "column", gap: "2rem" }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "3rem 2rem",
+              alignContent: "start",
+              paddingTop: "4rem",
+            }}
           >
-            {/* Abstract shape / photo placeholder */}
-            <div
-              style={{
-                aspectRatio: "4/3",
-                background: "var(--bg-secondary)",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                position: "relative",
-                overflow: "hidden",
-              }}
-            >
-              {/* Decorative geometric pattern */}
-              <div
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  backgroundImage: `
-                    radial-gradient(circle at 30% 30%, rgba(74, 222, 128, 0.06) 0%, transparent 50%),
-                    radial-gradient(circle at 70% 70%, rgba(74, 222, 128, 0.04) 0%, transparent 50%)
-                  `,
-                }}
-              />
-              <div
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  top: "20%",
-                  left: "15%",
-                  width: "70%",
-                  height: "60%",
-                  border: "1px solid var(--border)",
-                  borderRadius: "4px",
-                  transform: "rotate(6deg)",
-                  opacity: 0.5,
-                }}
-              />
-              <div
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  top: "25%",
-                  left: "20%",
-                  width: "60%",
-                  height: "50%",
-                  border: "1px solid rgba(74, 222, 128, 0.15)",
-                  borderRadius: "4px",
-                  transform: "rotate(-3deg)",
-                }}
-              />
-              <div
-                style={{
-                  position: "relative",
-                  textAlign: "center",
-                }}
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 16 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.25 + i * 0.08 }}
               >
                 <div
                   className="font-display"
                   style={{
-                    fontSize: "4rem",
+                    fontSize: "clamp(2.25rem, 4vw, 3rem)",
                     fontWeight: 700,
                     color: "var(--accent)",
                     lineHeight: 1,
-                    opacity: 0.9,
+                    marginBottom: "0.5rem",
                   }}
                 >
-                  AR
+                  {stat.value}
                 </div>
-                <p
+                <div
                   style={{
                     fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "0.6rem",
-                    letterSpacing: "0.2em",
+                    fontSize: "0.625rem",
+                    letterSpacing: "0.12em",
                     textTransform: "uppercase",
                     color: "var(--text-faint)",
-                    marginTop: "0.5rem",
                   }}
                 >
-                  Atif Riaz
-                </p>
-              </div>
-            </div>
-
-            {/* Stats */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: "1px",
-                background: "var(--border)",
-                border: "1px solid var(--border)",
-                borderRadius: "8px",
-                overflow: "hidden",
-              }}
-            >
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  style={{
-                    background: "var(--bg-secondary)",
-                    padding: "1.5rem 1.25rem",
-                  }}
-                >
-                  <div
-                    className="font-display"
-                    style={{
-                      fontSize: "1.875rem",
-                      fontWeight: 700,
-                      color: "var(--accent)",
-                      lineHeight: 1,
-                      marginBottom: "0.4rem",
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-jetbrains), monospace",
-                      fontSize: "0.625rem",
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: "var(--text-faint)",
-                    }}
-                  >
-                    {stat.label}
-                  </div>
+                  {stat.label}
                 </div>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </div>
