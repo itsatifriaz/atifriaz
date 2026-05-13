@@ -63,25 +63,26 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden"
-      style={{ paddingTop: "5rem", paddingBottom: "6rem" }}
+      className="hero-section"
     >
-      {/* Grid bg */}
+      {/* Grid background — full section */}
       <div aria-hidden="true" style={{
         position: "absolute", inset: 0,
         backgroundImage: "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
         backgroundSize: "60px 60px", opacity: 0.3, pointerEvents: "none",
       }} />
-      {/* Vignette */}
+      {/* Vignette — pulls harder on the right so grid doesn't fight the photo */}
       <div aria-hidden="true" style={{
         position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse 90% 70% at 40% 50%, transparent 20%, var(--bg) 100%)",
+        background: "radial-gradient(ellipse 80% 80% at 30% 50%, transparent 10%, var(--bg) 90%)",
         pointerEvents: "none",
       }} />
 
-      <div className="max-w-6xl mx-auto px-6 relative z-10 w-full hero-grid">
-        {/* LEFT: text */}
-        <div>
+      {/* ── Full-bleed hero layout ── */}
+      <div className="hero-inner">
+
+        {/* LEFT: text column — constrained, padded */}
+        <div className="hero-text">
           <FadeUp delay={0} style={{ marginBottom: "2rem" }}>
             <span style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
@@ -116,7 +117,7 @@ export default function Hero() {
 
           <FadeUp delay={0.2} as="h1">
             <h1 className="font-display" style={{
-              fontSize: "clamp(2.5rem, 5.5vw, 5.25rem)", lineHeight: 1.05,
+              fontSize: "clamp(2.5rem, 4.5vw, 5.25rem)", lineHeight: 1.05,
               fontWeight: 700, color: "var(--text)", marginBottom: "1.5rem",
             }}>
               <span style={{ display: "block" }}>Lead Frontend</span>
@@ -161,48 +162,53 @@ export default function Hero() {
           </FadeUp>
         </div>
 
-        {/* RIGHT: photo */}
+        {/* RIGHT: photo column — bleeds to viewport edge */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
+          className="hero-photo-col"
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1], delay: 0.35 }}
-          style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start" }}
+          transition={{ duration: 1.0, ease: [0.22, 0.61, 0.36, 1], delay: 0.3 }}
         >
-          {/* Thin accent vertical line — left edge */}
+          {/* Green accent glow behind the photo */}
+          <div aria-hidden="true" className="hero-glow" />
+
+          {/* Thin accent vertical line — left edge separator */}
           <div aria-hidden="true" style={{
-            position: "absolute", left: "-1.5rem", top: "15%", bottom: "15%", width: "1px",
+            position: "absolute", left: 0, top: "10%", bottom: "10%", width: "1px",
             background: "linear-gradient(to bottom, transparent, var(--accent) 40%, transparent)",
-            opacity: 0.5,
+            opacity: 0.4, zIndex: 2,
           }} />
 
-          {/* Photo wrapper — natural square crop, fade at bottom */}
-          <div style={{ position: "relative", width: "100%", maxWidth: "400px" }}>
+          {/* Photo wrapper — fills column, bleeds to right */}
+          <div className="hero-photo-wrap">
             <Image
               src="/atifriaz.png"
               alt="Atif Riaz — Lead Frontend Engineer"
               width={800}
               height={800}
               priority
-              sizes="(max-width: 900px) 90vw, 400px"
+              sizes="(max-width: 900px) 92vw, 48vw"
               style={{
                 width: "100%",
-                height: "auto",
+                height: "100%",
                 display: "block",
                 objectFit: "cover",
+                objectPosition: "center top",
                 filter: "contrast(1.06) brightness(1.0) saturate(0.9)",
               }}
             />
-            {/* Seamless bottom fade into page */}
+
+            {/* Seamless bottom fade into page bg */}
             <div aria-hidden="true" style={{
-              position: "absolute", bottom: 0, left: 0, right: 0, height: "45%",
-              background: "linear-gradient(to top, var(--bg) 30%, transparent 100%)",
-              pointerEvents: "none",
+              position: "absolute", bottom: 0, left: 0, right: 0, height: "40%",
+              background: "linear-gradient(to top, var(--bg) 25%, transparent 100%)",
+              pointerEvents: "none", zIndex: 1,
             }} />
-            {/* Side fades */}
+            {/* Left edge blends into text column */}
             <div aria-hidden="true" style={{
-              position: "absolute", inset: 0,
-              background: "linear-gradient(to right, var(--bg) 0%, transparent 12%, transparent 88%, var(--bg) 100%)",
-              pointerEvents: "none",
+              position: "absolute", top: 0, left: 0, bottom: 0, width: "35%",
+              background: "linear-gradient(to right, var(--bg) 0%, transparent 100%)",
+              pointerEvents: "none", zIndex: 1,
             }} />
           </div>
 
@@ -213,13 +219,14 @@ export default function Hero() {
             transition={{ delay: 1.1, duration: 0.5 }}
             style={{
               position: "absolute",
-              bottom: "40%",
-              right: "0.5rem",
+              bottom: "38%",
+              left: "2rem",
               background: "rgba(10,10,10,0.82)",
               border: "1px solid var(--border)",
               borderRadius: "6px",
               padding: "0.55rem 0.85rem",
               backdropFilter: "blur(20px)",
+              zIndex: 4,
             }}
           >
             <div style={{
@@ -246,7 +253,7 @@ export default function Hero() {
         style={{
           position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)",
           display: "flex", flexDirection: "column", alignItems: "center",
-          gap: "0.4rem", pointerEvents: "none",
+          gap: "0.4rem", pointerEvents: "none", zIndex: 10,
         }}
       >
         <span style={{
@@ -260,15 +267,96 @@ export default function Hero() {
       </motion.div>
 
       <style>{`
-        .hero-grid {
+        /* ── Hero section shell ── */
+        .hero-section {
+          min-height: 100svh;
+          position: relative;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          padding-top: 5rem;
+          padding-bottom: 6rem;
+        }
+
+        /* ── Full-bleed two-column inner ── */
+        .hero-inner {
+          position: relative;
+          z-index: 10;
+          width: 100%;
           display: grid;
           grid-template-columns: 1fr;
-          gap: 3rem;
           align-items: center;
+          min-height: calc(100svh - 11rem);
         }
+
+        /* ── Text column ── */
+        .hero-text {
+          padding: 0 clamp(1.5rem, 5vw, 5rem);
+        }
+
+        /* ── Photo column ── */
+        .hero-photo-col {
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: stretch;
+        }
+
+        .hero-photo-wrap {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 1 / 1;
+          overflow: hidden;
+        }
+
+        /* Glow */
+        .hero-glow {
+          position: absolute;
+          inset: -10% -5%;
+          background: radial-gradient(ellipse 70% 60% at 60% 50%, rgba(74,222,128,0.12) 0%, transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        /* ── Desktop: side-by-side, photo bleeds to viewport right ── */
         @media (min-width: 900px) {
-          .hero-grid { grid-template-columns: 1.1fr 0.9fr; }
+          .hero-inner {
+            grid-template-columns: 55fr 45fr;
+          }
+
+          .hero-photo-col {
+            /* Extend past the grid's right gutter to hug the viewport edge */
+            margin-right: calc(-1 * (100vw - 100%) / 2);
+            padding-right: 0;
+          }
+
+          .hero-photo-wrap {
+            aspect-ratio: unset;
+            height: min(90vh, 860px);
+            min-height: 500px;
+          }
         }
+
+        /* ── Mobile: photo below text, nice square ── */
+        @media (max-width: 899px) {
+          .hero-text {
+            padding: 0 1.5rem;
+            padding-bottom: 0;
+          }
+
+          .hero-photo-col {
+            padding: 0 1.5rem 0 1.5rem;
+          }
+
+          .hero-photo-wrap {
+            aspect-ratio: 1 / 1;
+            max-width: 480px;
+            margin: 0 auto;
+          }
+        }
+
+        /* ── Keyframes ── */
         @keyframes heroBlink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
