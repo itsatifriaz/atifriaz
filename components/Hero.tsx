@@ -163,58 +163,63 @@ export default function Hero() {
 
         {/* RIGHT: photo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.97 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1], delay: 0.3 }}
-          style={{ position: "relative", display: "flex", justifyContent: "center" }}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1], delay: 0.35 }}
+          style={{ position: "relative", display: "flex", justifyContent: "center", alignItems: "flex-start" }}
         >
-          {/* Green glow beneath photo */}
+          {/* Thin accent vertical line — left edge */}
           <div aria-hidden="true" style={{
-            position: "absolute", bottom: "-5%", left: "50%", transform: "translateX(-50%)",
-            width: "65%", height: "35%", background: "var(--accent)",
-            opacity: 0.07, filter: "blur(55px)", borderRadius: "50%", pointerEvents: "none",
+            position: "absolute", left: "-1.5rem", top: "15%", bottom: "15%", width: "1px",
+            background: "linear-gradient(to bottom, transparent, var(--accent) 40%, transparent)",
+            opacity: 0.5,
           }} />
 
-          {/* Accent left-edge line */}
-          <div aria-hidden="true" style={{
-            position: "absolute", left: 0, top: "8%", bottom: "8%", width: "2px",
-            background: "linear-gradient(to bottom, transparent, var(--accent), transparent)",
-            opacity: 0.4,
-          }} />
-
-          <div style={{
-            position: "relative", width: "100%", maxWidth: "420px",
-            aspectRatio: "3/4", overflow: "hidden",
-          }}>
+          {/* Photo wrapper — natural square crop, fade at bottom */}
+          <div style={{ position: "relative", width: "100%", maxWidth: "400px" }}>
             <Image
               src="/atifriaz.png"
               alt="Atif Riaz — Lead Frontend Engineer"
-              fill
+              width={800}
+              height={800}
               priority
-              sizes="(max-width: 900px) 90vw, 420px"
+              sizes="(max-width: 900px) 90vw, 400px"
               style={{
+                width: "100%",
+                height: "auto",
+                display: "block",
                 objectFit: "cover",
-                objectPosition: "top center",
-                filter: "contrast(1.08) brightness(1.02) saturate(0.92)",
+                filter: "contrast(1.06) brightness(1.0) saturate(0.9)",
               }}
             />
-            {/* Fade bottom into page bg */}
+            {/* Seamless bottom fade into page */}
             <div aria-hidden="true" style={{
-              position: "absolute", bottom: 0, left: 0, right: 0, height: "32%",
-              background: "linear-gradient(to top, var(--bg) 0%, transparent 100%)",
+              position: "absolute", bottom: 0, left: 0, right: 0, height: "45%",
+              background: "linear-gradient(to top, var(--bg) 30%, transparent 100%)",
+              pointerEvents: "none",
+            }} />
+            {/* Side fades */}
+            <div aria-hidden="true" style={{
+              position: "absolute", inset: 0,
+              background: "linear-gradient(to right, var(--bg) 0%, transparent 12%, transparent 88%, var(--bg) 100%)",
               pointerEvents: "none",
             }} />
           </div>
 
           {/* Floating name chip */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.5 }}
+            transition={{ delay: 1.1, duration: 0.5 }}
             style={{
-              position: "absolute", bottom: "20%", right: "0",
-              background: "rgba(10,10,10,0.88)", border: "1px solid var(--border)",
-              borderRadius: "6px", padding: "0.6rem 0.9rem", backdropFilter: "blur(16px)",
+              position: "absolute",
+              bottom: "40%",
+              right: "0.5rem",
+              background: "rgba(10,10,10,0.82)",
+              border: "1px solid var(--border)",
+              borderRadius: "6px",
+              padding: "0.55rem 0.85rem",
+              backdropFilter: "blur(20px)",
             }}
           >
             <div style={{
