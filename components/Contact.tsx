@@ -6,7 +6,7 @@ import { useRef } from "react";
 const contactLinks = [
   {
     label: "Email Me",
-    href: "mailto:atifriaz048@gmail.com",
+    href: "mailto:atifriaz.se@gmail.com",
     icon: (
       <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true">
         <path

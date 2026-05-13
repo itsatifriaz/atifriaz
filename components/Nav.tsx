@@ -78,7 +78,7 @@ export default function Nav() {
 
         {/* CTA */}
         <a
-          href="mailto:atifriaz048@gmail.com"
+          href="mailto:atifriaz.se@gmail.com"
           className="hidden md:inline-flex items-center gap-2 btn-ghost"
           style={{ padding: "0.45rem 1rem", fontSize: "0.75rem" }}
         >
