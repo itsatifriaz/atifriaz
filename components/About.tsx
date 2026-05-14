@@ -21,7 +21,7 @@ export default function About() {
       ref={ref}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid gap-16 lg:grid-cols-2">
+        <div className="grid gap-16">
           {/* Left: Text */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
