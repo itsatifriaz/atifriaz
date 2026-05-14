@@ -66,42 +66,23 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="section-pad"
-      style={{ borderTop: "1px solid var(--border)" }}
+      className="section-pad section-border"
     >
       <div className="max-w-6xl mx-auto px-6">
-        <div
-          style={{
-            maxWidth: "680px",
-            margin: "0 auto",
-            textAlign: "center",
-          }}
-        >
+        <div className="max-w-[680px] mx-auto text-center">
           {/* Animated envelope */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            style={{ marginBottom: "2rem" }}
+            className="mb-8"
           >
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-              style={{ display: "inline-block" }}
+              className="inline-block"
             >
-              <div
-                style={{
-                  width: "52px",
-                  height: "52px",
-                  border: "1px solid var(--border-accent)",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "var(--accent-dim)",
-                  margin: "0 auto",
-                }}
-              >
+              <div className="w-[52px] h-[52px] border-accent bg-accent-dim rounded-[12px] flex items-center justify-center mx-auto">
                 <svg
                   width="22"
                   height="22"
@@ -125,8 +106,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.05 }}
-            className="section-label"
-            style={{ marginBottom: "1rem" }}
+            className="section-label mb-4"
           >
             Contact
           </motion.p>
@@ -135,23 +115,10 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 5vw, 3.5rem)",
-              fontWeight: 700,
-              lineHeight: 1.1,
-              color: "var(--text)",
-              marginBottom: "1.25rem",
-            }}
+            className="font-display contact-heading"
           >
             Let&apos;s build something{" "}
-            <span
-              style={{
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: "var(--accent)",
-              }}
-            >
+            <span className="heading-accent">
               great.
             </span>
           </motion.h2>
@@ -160,12 +127,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            style={{
-              fontSize: "1rem",
-              lineHeight: 1.7,
-              color: "var(--text-muted)",
-              marginBottom: "2.75rem",
-            }}
+            className="text-body mb-11"
           >
             Open to remote senior / lead / principal roles and freelance
             projects. Let&apos;s talk.
@@ -175,12 +137,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              flexWrap: "wrap",
-              gap: "0.85rem",
-            }}
+            className="flex justify-center flex-wrap gap-[0.85rem]"
           >
             {contactLinks.map((link) => (
               <a

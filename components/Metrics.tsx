@@ -76,47 +76,17 @@ function StatCard({
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.55, delay: index * 0.1 }}
-      style={{
-        borderTop: "1px solid var(--border-accent)",
-        paddingTop: "1.75rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.5rem",
-      }}
+      className="stat-card flex flex-col gap-2"
     >
-      <div
-        style={{
-          fontFamily: "var(--font-playfair), Georgia, serif",
-          fontSize: "clamp(2.5rem, 5vw, 4rem)",
-          fontWeight: 700,
-          color: "var(--accent)",
-          lineHeight: 1,
-          letterSpacing: "-0.02em",
-        }}
-      >
+      <div className="stat-value">
         {stat.prefix}
         {count}
-        <span style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}>{stat.suffix}</span>
+        <span className="stat-suffix">{stat.suffix}</span>
       </div>
-      <p
-        style={{
-          fontFamily: "var(--font-jetbrains), monospace",
-          fontSize: "0.75rem",
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "var(--text)",
-          marginTop: "0.25rem",
-        }}
-      >
+      <p className="stat-label">
         {stat.label}
       </p>
-      <p
-        style={{
-          fontSize: "0.875rem",
-          lineHeight: 1.65,
-          color: "var(--text-muted)",
-        }}
-      >
+      <p className="stat-desc">
         {stat.desc}
       </p>
     </motion.div>
@@ -130,46 +100,28 @@ export default function Metrics() {
   return (
     <section
       id="metrics"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Impact
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             Numbers that{" "}
-            <span
-              style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}
-            >
+            <span className="heading-italic">
               matter.
             </span>
           </h2>
         </motion.div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "2rem 3rem",
-          }}
-          className="md:grid-cols-4"
-        >
+        <div className="grid-auto-2col md:grid-cols-4">
           {stats.map((stat, i) => (
             <StatCard key={stat.label} stat={stat} index={i} inView={inView} />
           ))}

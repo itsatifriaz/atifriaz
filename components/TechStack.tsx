@@ -49,49 +49,28 @@ export default function TechStack() {
   return (
     <section
       id="stack"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Technologies
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             Tools &amp;{" "}
-            <span
-              style={{
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: "var(--text-muted)",
-              }}
-            >
+            <span className="heading-italic">
               Technologies.
             </span>
           </h2>
         </motion.div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
-            gap: "1rem",
-          }}
-        >
+        <div className="grid-auto-fill-tech">
           {stackGroups.map((group, i) => (
             <motion.div
               key={group.category}
@@ -99,47 +78,20 @@ export default function TechStack() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: i * 0.07 }}
               className={`stack-group${group.ai ? " ai-group" : ""}`}
-              style={
-                group.ai
-                  ? { gridColumn: "1 / -1" }
-                  : {}
-              }
+              style={group.ai ? { gridColumn: "1 / -1" } : {}}
             >
               {group.ai && group.aiLabel && (
-                <p
-                  style={{
-                    fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "0.75rem",
-                    letterSpacing: "0.18em",
-                    textTransform: "uppercase",
-                    color: "var(--accent)",
-                    marginBottom: "0.6rem",
-                  }}
-                >
+                <p className="section-label mb-[0.6rem]">
                   ✦ {group.aiLabel}
                 </p>
               )}
               <h3
-                style={{
-                  fontFamily: "var(--font-jetbrains), monospace",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  color: group.ai ? "var(--accent)" : "var(--text-muted)",
-                  marginBottom: "0.9rem",
-                  opacity: group.ai ? 1 : 0.8,
-                }}
+                className={`mono-xs-upper mb-[0.9rem] ${group.ai ? "text-accent" : "text-muted"}`}
+                style={{ opacity: group.ai ? 1 : 0.8 }}
               >
                 {group.category}
               </h3>
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "0",
-                  margin: "-0.2rem",
-                }}
-              >
+              <div className="stack-items-wrap">
                 {group.items.map((item) => (
                   <span key={item} className="stack-item">
                     {item}

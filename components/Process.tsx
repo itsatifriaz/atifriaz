@@ -42,39 +42,28 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Approach
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             How I{" "}
-            <span
-              style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}
-            >
+            <span className="heading-italic">
               work.
             </span>
           </h2>
         </motion.div>
 
-        <div style={{ position: "relative" }}>
+        <div className="relative">
           {/* Horizontal connector line — desktop only */}
           {isDesktop && (
             <motion.div
@@ -82,16 +71,7 @@ export default function Process() {
               animate={inView ? { scaleX: 1, opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
               aria-hidden="true"
-              style={{
-                position: "absolute",
-                top: "1.75rem",
-                left: "12.5%",
-                right: "12.5%",
-                height: "1px",
-                background: "var(--border)",
-                transformOrigin: "left",
-                zIndex: 0,
-              }}
+              className="process-connector"
             />
           )}
 
@@ -110,42 +90,15 @@ export default function Process() {
                 initial={{ opacity: 0, y: 28 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "1rem",
-                }}
+                className="flex flex-col gap-4"
               >
-                <div
-                  style={{
-                    fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
-                    fontWeight: 700,
-                    color: "var(--accent)",
-                    opacity: 0.3,
-                    lineHeight: 1,
-                    letterSpacing: "-0.02em",
-                  }}
-                >
+                <div className="step-number">
                   {step.number}
                 </div>
-                <h3
-                  style={{
-                    fontSize: "1.0625rem",
-                    fontWeight: 600,
-                    color: "var(--text)",
-                    lineHeight: 1.3,
-                  }}
-                >
+                <h3 className="card-heading">
                   {step.title}
                 </h3>
-                <p
-                  style={{
-                    fontSize: "0.9rem",
-                    lineHeight: 1.7,
-                    color: "var(--text-muted)",
-                  }}
-                >
+                <p className="desc-body">
                   {step.body}
                 </p>
               </motion.div>

@@ -38,10 +38,10 @@ function useTypingCycle(words: string[], speed = 60, pause = 2200) {
   return displayed;
 }
 
-function FadeUp({ children, delay = 0, style, as = "div" }: {
+function FadeUp({ children, delay = 0, className, as = "div" }: {
   children: React.ReactNode;
   delay?: number;
-  style?: React.CSSProperties;
+  className?: string;
   as?: "div" | "p" | "h1" | "span";
 }) {
   const Tag = motion[as] as React.ElementType;
@@ -50,7 +50,7 @@ function FadeUp({ children, delay = 0, style, as = "div" }: {
       initial={{ opacity: 0, y: 22 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.65, ease: [0.22, 0.61, 0.36, 1], delay }}
-      style={style}
+      className={className}
     >
       {children}
     </Tag>
@@ -66,86 +66,54 @@ export default function Hero() {
       className="hero-section"
     >
       {/* Grid background — full section */}
-      <div aria-hidden="true" style={{
-        position: "absolute", inset: 0,
-        backgroundImage: "linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px)",
-        backgroundSize: "60px 60px", opacity: 0.3, pointerEvents: "none",
-      }} />
+      <div aria-hidden="true" className="hero-grid-bg" />
       {/* Vignette — pulls harder on the right so grid doesn't fight the photo */}
-      <div aria-hidden="true" style={{
-        position: "absolute", inset: 0,
-        background: "radial-gradient(ellipse 80% 80% at 30% 50%, transparent 10%, var(--bg) 90%)",
-        pointerEvents: "none",
-      }} />
+      <div aria-hidden="true" className="hero-vignette" />
 
       {/* ── Fixed-width container — aligned with all other sections ── */}
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10 hero-inner">
 
         {/* LEFT: text column */}
         <div className="hero-text">
-          <FadeUp delay={0} style={{ marginBottom: "2rem" }}>
-            <span style={{
-              display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
-              letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)",
-              background: "var(--bg-secondary)", border: "1px solid var(--border)",
-              borderRadius: "20px", padding: "0.35rem 0.9rem",
-            }}>
-              <span style={{
-                width: "6px", height: "6px", background: "var(--accent)",
-                borderRadius: "50%", display: "inline-block",
-                boxShadow: "0 0 6px var(--accent)", animation: "heroPulse 2s ease-in-out infinite",
-              }} />
+          <FadeUp delay={0} className="mb-8">
+            <span className="hero-pill">
+              <span className="pulse-dot" />
               Open to Remote Opportunities
             </span>
           </FadeUp>
 
-          <FadeUp delay={0.1} style={{ marginBottom: "1rem" }}>
-            <div style={{
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
-              letterSpacing: "0.12em", textTransform: "uppercase",
-              color: "var(--accent)", minHeight: "1.2em",
-            }}>
+          <FadeUp delay={0.1} className="mb-4">
+            <div className="mono-xs-upper text-accent typed-role-area">
               <span>{typed}</span>
-              <span style={{
-                display: "inline-block", width: "2px", height: "0.85em",
-                background: "var(--accent)", marginLeft: "2px", verticalAlign: "middle",
-                animation: "heroBlink 1s step-end infinite",
-              }} />
+              <span className="blink-cursor" />
             </div>
           </FadeUp>
 
           <FadeUp delay={0.2} as="h1">
-            <h1 className="font-display" style={{
-              fontSize: "clamp(2.5rem, 4.5vw, 5.25rem)", lineHeight: 1.05,
-              fontWeight: 700, color: "var(--text)", marginBottom: "1.5rem",
-            }}>
-              <span style={{ display: "block" }}>Frontend</span>
-              <span style={{ display: "block" }}>
+            <h1 className="font-display hero-heading">
+              <span className="block">Frontend</span>
+              <span className="block">
                 Developer.{" "}
-                <span style={{ fontWeight: 400, fontStyle: "italic", color: "var(--text-muted)" }}>
+                <span className="heading-italic">
                   Building
                 </span>
               </span>
-              <span style={{ display: "block", color: "var(--accent)", fontStyle: "italic", fontWeight: 400 }}>
+              <span className="block heading-accent">
                 interfaces that scale.
               </span>
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.35} as="p">
-            <p style={{
-              fontSize: "1rem", lineHeight: 1.7, color: "var(--text-muted)",
-              maxWidth: "480px", marginBottom: "2.5rem",
-            }}>
+            <p className="hero-body-text">
               10+ years shipping high-traffic products at{" "}
-              <span style={{ color: "var(--text)" }}>Zameen.com</span> &amp;{" "}
-              <span style={{ color: "var(--text)" }}>Cityscape Technology, Canada</span>.
+              <span className="text-primary">Zameen.com</span> &amp;{" "}
+              <span className="text-primary">Cityscape Technology, Canada</span>.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.5}>
-            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+            <div className="flex gap-4 flex-wrap">
               <a href="#work" className="btn-primary">
                 View My Work
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -173,11 +141,7 @@ export default function Hero() {
           <div aria-hidden="true" className="hero-glow" />
 
           {/* Thin accent vertical line — left edge separator */}
-          <div aria-hidden="true" style={{
-            position: "absolute", left: 0, top: "10%", bottom: "10%", width: "1px",
-            background: "linear-gradient(to bottom, transparent, var(--accent) 40%, transparent)",
-            opacity: 0.4, zIndex: 2,
-          }} />
+          <div aria-hidden="true" className="hero-accent-line" />
 
           {/* Photo wrapper — fills column, bleeds to right */}
           <div className="hero-photo-wrap">
@@ -188,40 +152,17 @@ export default function Hero() {
               height={800}
               priority
               sizes="(max-width: 900px) 92vw, 48vw"
-              style={{
-                width: "100%",
-                height: "100%",
-                display: "block",
-                objectFit: "cover",
-                objectPosition: "center top",
-                filter: "contrast(1.06) brightness(1.0) saturate(0.9)",
-              }}
+              className="hero-photo-img"
             />
 
             {/* Seamless bottom fade */}
-            <div aria-hidden="true" style={{
-              position: "absolute", bottom: 0, left: 0, right: 0, height: "40%",
-              background: "linear-gradient(to top, var(--bg) 25%, transparent 100%)",
-              pointerEvents: "none", zIndex: 1,
-            }} />
+            <div aria-hidden="true" className="hero-fade-bottom" />
             {/* Top fade */}
-            <div aria-hidden="true" style={{
-              position: "absolute", top: 0, left: 0, right: 0, height: "30%",
-              background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)",
-              pointerEvents: "none", zIndex: 1,
-            }} />
+            <div aria-hidden="true" className="hero-fade-top" />
             {/* Left edge blends into text column */}
-            <div aria-hidden="true" style={{
-              position: "absolute", top: 0, left: 0, bottom: 0, width: "30%",
-              background: "linear-gradient(to right, var(--bg) 0%, transparent 100%)",
-              pointerEvents: "none", zIndex: 1,
-            }} />
+            <div aria-hidden="true" className="hero-fade-left" />
             {/* Right edge fade */}
-            <div aria-hidden="true" style={{
-              position: "absolute", top: 0, right: 0, bottom: 0, width: "20%",
-              background: "linear-gradient(to left, var(--bg) 0%, transparent 100%)",
-              pointerEvents: "none", zIndex: 1,
-            }} />
+            <div aria-hidden="true" className="hero-fade-right" />
           </div>
 
           {/* Floating name chip */}
@@ -229,29 +170,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1, duration: 0.5 }}
-            style={{
-              position: "absolute",
-              bottom: "35%",
-              right: "1rem",
-              background: "var(--bg-glass)",
-              border: "1px solid var(--border)",
-              borderRadius: "6px",
-              padding: "0.55rem 0.85rem",
-              backdropFilter: "blur(20px)",
-              zIndex: 4,
-            }}
+            className="hero-name-chip"
           >
-            <div style={{
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
-              letterSpacing: "0.12em", textTransform: "uppercase",
-              color: "var(--accent)", marginBottom: "0.2rem",
-            }}>
+            <div className="mono-xs-upper text-accent mb-[0.2rem]">
               Atif Riaz
             </div>
-            <div style={{
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
-              letterSpacing: "0.08em", color: "var(--text-faint)",
-            }}>
+            <div className="mono-xs-wide text-faint">
               Lead Frontend Engineer
             </div>
           </motion.div>
@@ -262,20 +186,10 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.6 }}
-        style={{
-          position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)",
-          display: "flex", flexDirection: "column", alignItems: "center",
-          gap: "0.4rem", pointerEvents: "none", zIndex: 10,
-        }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-[0.4rem] pointer-events-none z-10"
       >
-        <span style={{
-          fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
-          letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-faint)",
-        }}>scroll</span>
-        <div style={{
-          width: "1px", height: "40px",
-          background: "linear-gradient(to bottom, var(--text-faint), transparent)",
-        }} />
+        <span className="scroll-hint-text">scroll</span>
+        <div className="hero-scroll-line" />
       </motion.div>
 
       <style>{`

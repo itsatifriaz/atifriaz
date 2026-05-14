@@ -70,35 +70,21 @@ export default function Work() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Selected Work
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             Projects I&apos;ve{" "}
-            <span style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}>
+            <span className="heading-italic">
               shipped.
             </span>
           </h2>
         </motion.div>
 
         {/* Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 480px), 1fr))",
-            gap: "1.25rem",
-          }}
-        >
+        <div className="grid-auto-fill-480">
           {projects.map((project, i) => (
             <ProjectCard key={project.name} project={project} index={i} inView={inView} />
           ))}
@@ -122,39 +108,15 @@ function ProjectCard({
       initial={{ opacity: 0, y: 28 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="work-card"
-      style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}
+      className="work-card flex flex-col gap-5"
     >
       {/* Top row */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-        }}
-      >
+      <div className="flex justify-between items-start">
         <div>
-          <h3
-            style={{
-              fontSize: "1.125rem",
-              fontWeight: 600,
-              color: "var(--text)",
-              marginBottom: "0.25rem",
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="card-heading-lg">
             {project.name}
           </h3>
-          <span
-            style={{
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--accent)",
-              opacity: 0.8,
-            }}
-          >
+          <span className="role-label">
             {project.role}
           </span>
         </div>
@@ -162,48 +124,20 @@ function ProjectCard({
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "30px",
-            height: "30px",
-            border: "1px solid var(--border)",
-            borderRadius: "50%",
-            color: "var(--text-muted)",
-            transition: "border-color 0.2s, color 0.2s, background 0.2s",
-            flexShrink: 0,
-          }}
-          onMouseEnter={(e) => {
-            (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
-            (e.currentTarget as HTMLElement).style.color = "var(--accent)";
-            (e.currentTarget as HTMLElement).style.background = "var(--accent-dim)";
-          }}
-          onMouseLeave={(e) => {
-            (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-            (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
-            (e.currentTarget as HTMLElement).style.background = "transparent";
-          }}
           aria-label={`Visit ${project.name}`}
+          className="icon-btn"
         >
           <ArrowIcon />
         </a>
       </div>
 
       {/* Description */}
-      <p
-        style={{
-          fontSize: "0.9rem",
-          lineHeight: 1.7,
-          color: "var(--text-muted)",
-          flexGrow: 1,
-        }}
-      >
+      <p className="desc-body grow">
         {project.description}
       </p>
 
       {/* Stack tags */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem" }}>
+      <div className="flex flex-wrap gap-[0.35rem]">
         {project.stack.map((tag) => (
           <span key={tag} className="tag">
             {tag}

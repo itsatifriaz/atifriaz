@@ -55,125 +55,55 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Testimonials
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             What people{" "}
-            <span
-              style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}
-            >
+            <span className="heading-italic">
               say.
             </span>
           </h2>
         </motion.div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))",
-            gap: "1.5rem",
-          }}
-        >
+        <div className="grid-auto-fill-320">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="work-card"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.5rem",
-                boxShadow: "0 0 30px rgba(74,222,128,0.04)",
-              }}
+              className="work-card testimonial-card flex flex-col gap-6"
             >
-              <QuoteIcon />
+              <div className="quote-icon">
+                <QuoteIcon />
+              </div>
 
-              <p
-                style={{
-                  fontSize: "1rem",
-                  lineHeight: 1.8,
-                  color: "var(--text-muted)",
-                  flexGrow: 1,
-                }}
-              >
+              <p className="text-body grow">
                 {t.quote}
               </p>
 
-              <div
-                style={{
-                  height: "1px",
-                  background: "var(--border)",
-                }}
-                aria-hidden="true"
-              />
+              <hr aria-hidden="true" className="card-divider" />
 
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.875rem",
-                }}
-              >
-                <div
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    borderRadius: "50%",
-                    background: "var(--accent-dim)",
-                    border: "1px solid var(--border-accent)",
-                    color: "var(--accent)",
-                    fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "0.75rem",
-                    fontWeight: 600,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                    letterSpacing: "0.05em",
-                  }}
-                >
+              <div className="flex items-center gap-[0.875rem]">
+                <div className="avatar">
                   {t.initials}
                 </div>
                 <div>
-                  <p
-                    style={{
-                      fontSize: "0.9375rem",
-                      fontWeight: 600,
-                      color: "var(--text)",
-                      lineHeight: 1.3,
-                    }}
-                  >
+                  <p className="person-name">
                     {t.name}
                   </p>
-                  <p
-                    style={{
-                      fontSize: "0.8125rem",
-                      color: "var(--text-faint)",
-                      lineHeight: 1.4,
-                    }}
-                  >
+                  <p className="person-role">
                     {t.role} · {t.company}
                   </p>
                 </div>

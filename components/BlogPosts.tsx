@@ -59,22 +59,7 @@ function ArrowIcon() {
 function PlatformBadge({ platform }: { platform: "DEV" | "Hashnode" }) {
   const isDev = platform === "DEV";
   return (
-    <span
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        fontFamily: "var(--font-jetbrains), monospace",
-        fontSize: "0.75rem",
-        fontWeight: 600,
-        letterSpacing: "0.06em",
-        padding: "0.2rem 0.5rem",
-        borderRadius: "4px",
-        border: isDev ? "1px solid rgba(255,255,255,0.13)" : "1px solid rgba(41,98,255,0.3)",
-        background: isDev ? "#0a0a0a" : "rgba(41,98,255,0.12)",
-        color: isDev ? "#ffffff" : "#2962FF",
-        flexShrink: 0,
-      }}
-    >
+    <span className={isDev ? "badge-dev" : "badge-hashnode"}>
       {platform}
     </span>
   );
@@ -87,9 +72,8 @@ export default function BlogPosts() {
   return (
     <section
       id="writing"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
@@ -97,104 +81,45 @@ export default function BlogPosts() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Writing
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             Thoughts I&apos;ve{" "}
-            <span
-              style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}
-            >
+            <span className="heading-italic">
               published.
             </span>
           </h2>
         </motion.div>
 
         {/* Grid */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 460px), 1fr))",
-            gap: "1.25rem",
-          }}
-        >
+        <div className="grid-auto-fill-460">
           {posts.map((post, i) => (
             <motion.div
               key={post.title}
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="work-card"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-                position: "relative",
-              }}
+              className="work-card flex flex-col gap-4 relative"
             >
               {/* Platform badge top-right */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  gap: "0.75rem",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.0625rem",
-                    fontWeight: 600,
-                    color: "var(--text)",
-                    lineHeight: 1.4,
-                    letterSpacing: "-0.01em",
-                    flexGrow: 1,
-                  }}
-                >
+              <div className="flex justify-between items-start gap-3">
+                <h3 className="card-heading grow">
                   {post.title}
                 </h3>
                 <PlatformBadge platform={post.platform} />
               </div>
 
               {/* Excerpt */}
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  lineHeight: 1.7,
-                  color: "var(--text-muted)",
-                  flexGrow: 1,
-                }}
-              >
+              <p className="text-sm-body grow">
                 {post.excerpt}
               </p>
 
               {/* Footer row */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  flexWrap: "wrap",
-                  gap: "0.5rem",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "0.75rem",
-                    color: "var(--text-faint)",
-                  }}
-                >
+              <div className="flex items-center justify-between flex-wrap gap-2">
+                <span className="mono-xs text-faint">
                   {post.date} · {post.readTime}
                 </span>
                 <a
@@ -202,28 +127,7 @@ export default function BlogPosts() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Read: ${post.title}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "30px",
-                    height: "30px",
-                    border: "1px solid var(--border)",
-                    borderRadius: "50%",
-                    color: "var(--text-muted)",
-                    transition: "border-color 0.2s, color 0.2s, background 0.2s",
-                    flexShrink: 0,
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--accent)";
-                    (e.currentTarget as HTMLElement).style.background = "var(--accent-dim)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
-                    (e.currentTarget as HTMLElement).style.background = "transparent";
-                  }}
+                  className="icon-btn"
                 >
                   <ArrowIcon />
                 </a>
@@ -237,7 +141,7 @@ export default function BlogPosts() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.45 }}
-          style={{ marginTop: "3rem", textAlign: "center" }}
+          className="mt-12 text-center"
         >
           <a
             href="https://dev.to/iamatifriaz"

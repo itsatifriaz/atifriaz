@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 const items = [
   "React",
   "Next.js",
@@ -35,52 +33,17 @@ export default function Marquee() {
   const doubled = [...items, ...items];
 
   return (
-    <div
-      style={{
-        borderTop: "1px solid var(--border)",
-        borderBottom: "1px solid var(--border)",
-        overflow: "hidden",
-        padding: "0.85rem 0",
-        background: "var(--bg-secondary)",
-      }}
-      aria-hidden="true"
-    >
-      <div
-        className="animate-marquee"
-        style={{
-          display: "flex",
-          width: "max-content",
-          gap: "2.5rem",
-          alignItems: "center",
-        }}
-      >
+    <div className="marquee-container" aria-hidden="true">
+      <div className="animate-marquee marquee-track">
         {doubled.map((item, i) => (
           <span
             key={i}
-            style={{
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              color: AI_ITEMS.has(item) ? "var(--accent)" : "var(--text-faint)",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.6rem",
-              whiteSpace: "nowrap",
-            }}
+            className={`marquee-item ${AI_ITEMS.has(item) ? "text-accent" : "text-faint"}`}
           >
             {item}
             <span
-              style={{
-                display: "inline-block",
-                width: "3px",
-                height: "3px",
-                borderRadius: "50%",
-                background: AI_ITEMS.has(item)
-                  ? "var(--accent)"
-                  : "var(--text-faint)",
-                opacity: 0.5,
-              }}
+              className="marquee-dot"
+              style={{ background: AI_ITEMS.has(item) ? "var(--accent)" : "var(--text-faint)" }}
             />
           </span>
         ))}

@@ -62,74 +62,39 @@ export default function OpenSource() {
   return (
     <section
       id="open-source"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Open Source
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             Code I&apos;ve{" "}
-            <span
-              style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}
-            >
+            <span className="heading-italic">
               shared.
             </span>
           </h2>
         </motion.div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))",
-            gap: "1.25rem",
-          }}
-        >
+        <div className="grid-auto-fill-300">
           {repos.map((repo, i) => (
             <motion.div
               key={repo.name}
               initial={{ opacity: 0, y: 28 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="work-card"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1rem",
-              }}
+              className="work-card flex flex-col gap-4"
             >
               {/* Top row: name + arrow link */}
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                }}
-              >
-                <h3
-                  style={{
-                    fontSize: "1.0625rem",
-                    fontWeight: 600,
-                    color: "var(--text)",
-                    fontFamily: "var(--font-jetbrains), monospace",
-                  }}
-                >
+              <div className="flex justify-between items-start">
+                <h3 className="card-heading">
                   {repo.name}
                 </h3>
                 <a
@@ -137,97 +102,40 @@ export default function OpenSource() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`View ${repo.name} on GitHub`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "30px",
-                    height: "30px",
-                    border: "1px solid var(--border)",
-                    borderRadius: "50%",
-                    color: "var(--text-muted)",
-                    transition: "border-color 0.2s, color 0.2s, background 0.2s",
-                    flexShrink: 0,
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--accent)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--accent)";
-                    (e.currentTarget as HTMLElement).style.background = "var(--accent-dim)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-                    (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
-                    (e.currentTarget as HTMLElement).style.background = "transparent";
-                  }}
+                  className="icon-btn"
                 >
                   <ArrowIcon />
                 </a>
               </div>
 
               {/* Description */}
-              <p
-                style={{
-                  fontSize: "0.875rem",
-                  lineHeight: 1.65,
-                  color: "var(--text-muted)",
-                  flexGrow: 1,
-                }}
-              >
+              <p className="desc-body grow">
                 {repo.desc}
               </p>
 
               {/* Bottom row: lang + stars + forks */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                  gap: "1rem",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
+              <div className="flex items-center flex-wrap gap-4">
+                <div className="flex items-center gap-[0.4rem]">
+                  {/* lang-dot keeps runtime color */}
                   <span
-                    style={{
-                      width: "10px",
-                      height: "10px",
-                      borderRadius: "50%",
-                      background: repo.color,
-                      flexShrink: 0,
-                    }}
+                    className="lang-dot"
+                    style={{ background: repo.color }}
                     aria-hidden="true"
                   />
-                  <span
-                    style={{
-                      fontFamily: "var(--font-jetbrains), monospace",
-                      fontSize: "0.75rem",
-                      color: "var(--text-faint)",
-                    }}
-                  >
+                  <span className="mono-xs text-faint">
                     {repo.lang}
                   </span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-jetbrains), monospace",
-                      fontSize: "0.75rem",
-                      color: "var(--text-faint)",
-                    }}
-                  >
+                <div className="flex items-center gap-[0.3rem]">
+                  <span className="mono-xs text-faint">
                     ★ {repo.stars}
                   </span>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: "0.3rem" }}>
-                  <span style={{ color: "var(--text-faint)" }}>
+                <div className="flex items-center gap-[0.3rem]">
+                  <span className="text-faint">
                     <ForkIcon />
                   </span>
-                  <span
-                    style={{
-                      fontFamily: "var(--font-jetbrains), monospace",
-                      fontSize: "0.75rem",
-                      color: "var(--text-faint)",
-                    }}
-                  >
+                  <span className="mono-xs text-faint">
                     {repo.forks}
                   </span>
                 </div>

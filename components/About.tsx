@@ -17,62 +17,34 @@ export default function About() {
   return (
     <section
       id="about"
-      className="section-pad"
+      className="section-pad section-border"
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr",
-            gap: "4rem",
-          }}
-          className="lg:grid-cols-2"
-        >
+        <div className="grid gap-16 lg:grid-cols-2">
           {/* Left: Text */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="section-label" style={{ marginBottom: "1rem" }}>
+            <p className="section-label mb-4">
               About
             </p>
-            <h2
-              className="font-display"
-              style={{
-                fontSize: "clamp(1.75rem, 3.5vw, 2.75rem)",
-                fontWeight: 700,
-                lineHeight: 1.15,
-                color: "var(--text)",
-                marginBottom: "2rem",
-              }}
-            >
+            <h2 className="font-display section-heading mb-8">
               A frontend engineer who{" "}
-              <span
-                style={{ fontStyle: "italic", fontWeight: 400, color: "var(--text-muted)" }}
-              >
+              <span className="heading-italic">
                 thinks in systems.
               </span>
             </h2>
 
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "1.25rem",
-                fontSize: "0.9375rem",
-                lineHeight: 1.75,
-                color: "var(--text-muted)",
-              }}
-            >
+            <div className="flex flex-col gap-5 text-body">
               <p>
                 I&apos;ve spent 10+ years building interfaces people actually
                 use — from{" "}
-                <span style={{ color: "var(--text)" }}>Zameen.com</span>{" "}
+                <span className="text-primary">Zameen.com</span>{" "}
                 serving millions of Pakistani users, to{" "}
-                <span style={{ color: "var(--text)" }}>
+                <span className="text-primary">
                   Cityscape Technology
                 </span>{" "}
                 helping Canadian homebuyers navigate the GTA market.
@@ -85,43 +57,28 @@ export default function About() {
               </p>
               <p>
                 I also leverage the latest AI-powered tools —{" "}
-                <span style={{ color: "var(--accent)" }}>Claude Code</span>,{" "}
-                <span style={{ color: "var(--accent)" }}>GitHub Copilot</span>,{" "}
-                <span style={{ color: "var(--accent)" }}>Cursor</span>, and{" "}
-                <span style={{ color: "var(--accent)" }}>OpenAI Codex</span> —
+                <span className="text-accent">Claude Code</span>,{" "}
+                <span className="text-accent">GitHub Copilot</span>,{" "}
+                <span className="text-accent">Cursor</span>, and{" "}
+                <span className="text-accent">OpenAI Codex</span> —
                 as a core part of my workflow. This isn&apos;t a trend for me;
                 it&apos;s how I consistently deliver more, faster, without
                 cutting corners.
               </p>
               <p>
                 Currently based in{" "}
-                <span style={{ color: "var(--text)" }}>Lahore, Pakistan</span>.
+                <span className="text-primary">Lahore, Pakistan</span>.
                 Open to remote roles worldwide.
               </p>
             </div>
 
             {/* AI badge */}
-            <div style={{ marginTop: "2rem" }}>
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontFamily: "var(--font-jetbrains), monospace",
-                  fontSize: "0.75rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--accent)",
-                  background: "var(--accent-dim)",
-                  border: "1px solid var(--border-accent)",
-                  borderRadius: "4px",
-                  padding: "0.4rem 0.8rem",
-                }}
-              >
+            <div className="mt-8">
+              <span className="ai-badge">
                 ✦ AI-Native Workflow
               </span>
             </div>
-          </motion.div> 
+          </motion.div>
         </div>
       </div>
     </section>

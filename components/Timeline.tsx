@@ -48,146 +48,65 @@ export default function Timeline() {
   return (
     <section
       ref={ref}
-      style={{ borderTop: "1px solid var(--border)" }}
-      className="section-pad"
+      className="section-border section-pad"
     >
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.55 }}
-          style={{ marginBottom: "3.5rem" }}
+          className="mb-14"
         >
-          <p className="section-label" style={{ marginBottom: "0.75rem" }}>
+          <p className="section-label mb-3">
             Experience
           </p>
-          <h2
-            className="font-display"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              color: "var(--text)",
-              lineHeight: 1.1,
-            }}
-          >
+          <h2 className="font-display section-heading">
             Where I&apos;ve{" "}
-            <span
-              style={{
-                fontStyle: "italic",
-                fontWeight: 400,
-                color: "var(--text-muted)",
-              }}
-            >
+            <span className="heading-italic">
               worked.
             </span>
           </h2>
         </motion.div>
 
         {/* Timeline */}
-        <div style={{ position: "relative", maxWidth: "720px" }}>
+        <div className="relative max-w-[720px]">
           {/* Vertical line */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              left: "3px",
-              top: "6px",
-              bottom: 0,
-              width: "1px",
-              background:
-                "linear-gradient(to bottom, var(--accent), var(--border) 80%, transparent)",
-            }}
-          />
+          <div aria-hidden="true" className="timeline-line" />
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          <div className="flex flex-col">
             {experiences.map((exp, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: -16 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                style={{
-                  display: "flex",
-                  gap: "1.75rem",
-                  paddingBottom: i < experiences.length - 1 ? "2.5rem" : 0,
-                }}
+                className="flex gap-7"
+                style={{ paddingBottom: i < experiences.length - 1 ? "2.5rem" : 0 }}
               >
                 {/* Dot */}
-                <div
-                  style={{
-                    flexShrink: 0,
-                    paddingTop: "6px",
-                  }}
-                >
+                <div className="shrink-0 pt-[6px]">
                   <div className="timeline-dot" />
                 </div>
 
                 {/* Content */}
-                <div style={{ paddingBottom: "0.5rem" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "baseline",
-                      gap: "1rem",
-                      flexWrap: "wrap",
-                      marginBottom: "0.35rem",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontFamily: "var(--font-jetbrains), monospace",
-                        fontSize: "0.75rem",
-                        letterSpacing: "0.08em",
-                        color: exp.current ? "var(--accent)" : "var(--text-faint)",
-                      }}
-                    >
+                <div className="pb-2">
+                  <div className="flex items-baseline gap-4 flex-wrap mb-[0.35rem]">
+                    <span className={`mono-xs-wide ${exp.current ? "text-accent" : "text-faint"}`}>
                       {exp.period}
                     </span>
                     {exp.current && (
-                      <span
-                        style={{
-                          fontFamily: "var(--font-jetbrains), monospace",
-                          fontSize: "0.75rem",
-                          letterSpacing: "0.12em",
-                          textTransform: "uppercase",
-                          color: "var(--accent)",
-                          background: "var(--accent-dim)",
-                          border: "1px solid var(--border-accent)",
-                          borderRadius: "3px",
-                          padding: "0.15rem 0.45rem",
-                        }}
-                      >
+                      <span className="badge-current">
                         Current
                       </span>
                     )}
                   </div>
-                  <h3
-                    style={{
-                      fontSize: "1.0625rem",
-                      fontWeight: 600,
-                      color: "var(--text)",
-                      marginBottom: "0.25rem",
-                      letterSpacing: "-0.01em",
-                    }}
-                  >
+                  <h3 className="card-heading mb-1">
                     {exp.title}
                   </h3>
-                  <p
-                    style={{
-                      fontSize: "0.875rem",
-                      color: "var(--text-muted)",
-                    }}
-                  >
+                  <p className="company-text">
                     {exp.company}
                   </p>
-                  <p
-                    style={{
-                      fontFamily: "var(--font-jetbrains), monospace",
-                      fontSize: "0.75rem",
-                      color: "var(--text-faint)",
-                      marginTop: "0.2rem",
-                    }}
-                  >
+                  <p className="mono-xs text-faint mt-[0.2rem]">
                     {exp.location}
                   </p>
                 </div>

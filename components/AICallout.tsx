@@ -49,11 +49,7 @@ export default function AICallout() {
   return (
     <section
       ref={ref}
-      style={{
-        borderTop: "1px solid var(--border)",
-        borderBottom: "1px solid var(--border)",
-        padding: "3rem 0",
-      }}
+      className="ai-callout-section"
     >
       <div className="max-w-6xl mx-auto px-6">
         {/* Top row: label + body */}
@@ -61,65 +57,36 @@ export default function AICallout() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          style={{ marginBottom: "2rem" }}
+          className="mb-8"
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+          <div className="flex items-center gap-3 mb-3">
             {/* Accent left bar */}
-            <div style={{
-              width: "3px", height: "1.1rem",
-              background: "var(--accent)",
-              borderRadius: "2px",
-              flexShrink: 0,
-            }} />
-            <span style={{
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.18em",
-              textTransform: "uppercase",
-              color: "var(--accent)",
-            }}>
+            <div className="accent-bar" />
+            <span className="mono-xs-upper text-accent">
               AI-Enhanced Development
             </span>
           </div>
 
-          <p style={{
-            fontSize: "1rem",
-            lineHeight: 1.7,
-            color: "var(--text-muted)",
-            maxWidth: "580px",
-          }}>
+          <p className="intro-body-text">
             I build faster and smarter using the latest AI-powered IDEs and tools
             as a core part of my engineering workflow —{" "}
-            <span style={{ color: "var(--text)" }}>
+            <span className="text-primary">
               not as a gimmick, but as a multiplier.
             </span>
           </p>
         </motion.div>
 
         {/* Tools row */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+        <div className="flex flex-wrap gap-3">
           {tools.map((tool, i) => (
             <motion.div
               key={tool.label}
               initial={{ opacity: 0, y: 10 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: 0.15 + i * 0.08 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                padding: "0.5rem 1rem",
-                border: "1px solid var(--border)",
-                borderRadius: "6px",
-                background: "var(--bg-secondary)",
-                fontFamily: "var(--font-jetbrains), monospace",
-                fontSize: "0.75rem",
-                letterSpacing: "0.06em",
-                color: "var(--text-muted)",
-                cursor: "default",
-              }}
+              className="ai-pill"
             >
-              <span style={{ color: "var(--accent)", display: "flex", alignItems: "center" }}>
+              <span className="text-accent flex items-center">
                 {tool.icon}
               </span>
               {tool.label}

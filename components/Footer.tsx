@@ -27,66 +27,34 @@ const blogs = [
     label: "GitHub",
     href: "https://github.com/itsatifriaz",
     icon: <GitHubIcon />,
-    hoverColor: "#ffffff",
+    className: "social-link social-link-github",
   },
   {
     label: "DEV.to",
     href: "https://dev.to/iamatifriaz",
     icon: <DevToIcon />,
-    hoverColor: "#ffffff",
+    className: "social-link social-link-dev",
   },
   {
     label: "Hashnode",
     href: "https://atifriaz.hashnode.dev/",
     icon: <HashnodeIcon />,
-    hoverColor: "#2962FF",
+    className: "social-link social-link-hashnode",
   },
 ];
 
 export default function Footer() {
   return (
-    <footer
-      aria-label="Site footer"
-      style={{
-        borderTop: "1px solid var(--border)",
-        padding: "1.75rem 0",
-        background: "var(--bg)",
-      }}
-    >
-      <div
-        className="max-w-6xl mx-auto px-6"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: "1rem",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: "0.75rem",
-            letterSpacing: "0.06em",
-            color: "var(--text-faint)",
-          }}
-        >
+    <footer aria-label="Site footer" className="site-footer">
+      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between flex-wrap gap-4">
+        <span className="mono-xs-narrow text-faint">
           Designed &amp; built by{" "}
-          <span style={{ color: "var(--text-muted)" }}>Atif Riaz</span> · 2026
+          <span className="text-muted">Atif Riaz</span> · 2026
         </span>
 
         {/* Blog links */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.75rem",
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              color: "var(--text-faint)",
-              marginRight: "0.5rem",
-            }}
-          >
+        <div className="flex items-center gap-2">
+          <span className="mono-xs-upper text-faint mr-2">
             Find me on
           </span>
           {blogs.map((b) => (
@@ -96,28 +64,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               title={b.label}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                color: "var(--text-faint)",
-                padding: "0.3rem 0.65rem",
-                borderRadius: "5px",
-                border: "1px solid var(--border)",
-                fontFamily: "var(--font-jetbrains), monospace",
-                fontSize: "0.75rem",
-                letterSpacing: "0.08em",
-                textDecoration: "none",
-                transition: "color 0.2s, border-color 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = b.hoverColor;
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = b.hoverColor;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLAnchorElement).style.color = "var(--text-faint)";
-                (e.currentTarget as HTMLAnchorElement).style.borderColor = "var(--border)";
-              }}
+              className={b.className}
             >
               {b.icon}
               {b.label}
@@ -125,27 +72,8 @@ export default function Footer() {
           ))}
         </div>
 
-        <span
-          style={{
-            fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: "0.75rem",
-            letterSpacing: "0.06em",
-            color: "var(--text-faint)",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.4rem",
-          }}
-        >
-          <span
-            style={{
-              width: "5px",
-              height: "5px",
-              background: "var(--accent)",
-              borderRadius: "50%",
-              display: "inline-block",
-              boxShadow: "0 0 5px var(--accent)",
-            }}
-          />
+        <span className="mono-xs-narrow text-faint flex items-center gap-[0.4rem]">
+          <span className="pulse-dot" />
           Open to remote
         </span>
       </div>

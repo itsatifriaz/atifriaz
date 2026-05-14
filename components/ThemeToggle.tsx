@@ -43,7 +43,7 @@ export default function ThemeToggle() {
 
   // Render a placeholder during SSR to avoid hydration mismatch
   if (!mounted) {
-    return <div style={{ width: "34px", height: "34px" }} />;
+    return <div className="theme-toggle-placeholder" />;
   }
 
   const isLight = theme === "light";
@@ -53,30 +53,7 @@ export default function ThemeToggle() {
       onClick={toggle}
       aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
       whileTap={{ scale: 0.9 }}
-      style={{
-        position: "relative",
-        width: "34px",
-        height: "34px",
-        borderRadius: "8px",
-        border: "1px solid var(--border)",
-        background: "var(--bg-secondary)",
-        color: "var(--text-muted)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        overflow: "hidden",
-        flexShrink: 0,
-        transition: "border-color 0.2s, color 0.2s, background 0.2s",
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "var(--border-accent)";
-        (e.currentTarget as HTMLElement).style.color = "var(--accent)";
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
-        (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
-      }}
+      className="theme-toggle"
     >
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
@@ -85,7 +62,7 @@ export default function ThemeToggle() {
           animate={{ y: 0, opacity: 1, rotate: 0 }}
           exit={{ y: isLight ? -12 : 12, opacity: 0, rotate: isLight ? 30 : -30 }}
           transition={{ duration: 0.22, ease: "easeOut" }}
-          style={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+          className="flex items-center justify-center"
         >
           {isLight ? <SunIcon /> : <MoonIcon />}
         </motion.span>
