@@ -436,3 +436,526 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ═══════════════════════════════════════════════
+   UTILITY CLASS SYSTEM
+   ═══════════════════════════════════════════════ */
+
+/* ── Color utilities ── */
+.text-primary   { color: var(--text); }
+.text-muted     { color: var(--text-muted); }
+.text-faint     { color: var(--text-faint); }
+/* .text-accent already exists */
+
+.bg-primary     { background: var(--bg); }
+.bg-secondary   { background: var(--bg-secondary); }
+.bg-tertiary    { background: var(--bg-tertiary); }
+.bg-accent-dim  { background: var(--accent-dim); }
+.bg-glass       { background: var(--bg-glass); }
+
+.border-default { border: 1px solid var(--border); }
+.border-accent  { border: 1px solid var(--border-accent); }
+
+/* ── Typography utilities ── */
+.font-mono      { font-family: var(--font-mono), monospace; }
+/* .font-display already exists */
+
+/* Mono label variants */
+.mono-xs        { font-family: var(--font-mono), monospace; font-size: 0.75rem; }
+.mono-xs-upper  { font-family: var(--font-mono), monospace; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.mono-xs-wide   { font-family: var(--font-mono), monospace; font-size: 0.75rem; letter-spacing: 0.08em; }
+.mono-sm        { font-family: var(--font-mono), monospace; font-size: 0.8125rem; }
+.mono-sm-muted  { font-family: var(--font-mono), monospace; font-size: 0.8125rem; color: var(--text-muted); }
+
+/* Body sizes */
+.text-sm-body   { font-size: 0.875rem; line-height: 1.7; color: var(--text-muted); }
+.text-body      { font-size: 1rem; line-height: 1.7; color: var(--text-muted); }
+.text-body-sm   { font-size: 0.9rem; line-height: 1.7; color: var(--text-muted); }
+
+/* Heading helpers */
+.heading-italic { font-style: italic; font-weight: 400; color: var(--text-muted); }
+.heading-accent { font-style: italic; font-weight: 400; color: var(--accent); }
+
+/* ── Component utilities ── */
+
+/* Accent left-bar (used in section headers) */
+.accent-bar {
+  width: 3px; height: 1.1rem;
+  background: var(--accent);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Pulse dot */
+.pulse-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px var(--accent);
+  animation: heroPulse 2s ease-in-out infinite;
+}
+.pulse-dot-lg {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent);
+  animation: heroPulse 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Blink cursor */
+.blink-cursor {
+  display: inline-block;
+  width: 2px; height: 0.85em;
+  background: var(--accent);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: heroBlink 1s step-end infinite;
+}
+.blink-block {
+  display: inline-block;
+  width: 8px; height: 15px;
+  background: var(--accent);
+  animation: heroBlink 1s step-end infinite;
+  opacity: 0.8;
+}
+
+/* Terminal panel */
+.terminal-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-tertiary);
+}
+.terminal-dot-red   { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; flex-shrink: 0; }
+.terminal-dot-yellow{ width: 10px; height: 10px; border-radius: 50%; background: #febc2e; flex-shrink: 0; }
+.terminal-dot-green { width: 10px; height: 10px; border-radius: 50%; background: #28c840; flex-shrink: 0; }
+.terminal-body      { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.875rem; }
+
+/* Focus card (Now section) */
+.focus-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+}
+
+/* Platform badges (BlogPosts) */
+.badge-dev {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem; border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.13);
+  background: #0a0a0a; color: #ffffff;
+  flex-shrink: 0;
+}
+.badge-hashnode {
+  display: inline-flex; align-items: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+  padding: 0.2rem 0.5rem; border-radius: 4px;
+  border: 1px solid rgba(41,98,255,0.3);
+  background: rgba(41,98,255,0.12); color: #2962FF;
+  flex-shrink: 0;
+}
+
+/* Current badge (Timeline) */
+.badge-current {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: 3px; padding: 0.15rem 0.45rem;
+}
+
+/* Availability badge (floating) */
+.availability-badge {
+  position: fixed; bottom: 2rem; right: 1.5rem; z-index: 100;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-accent);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  max-width: 272px;
+}
+
+/* Icon button (circular arrow links on cards) */
+.icon-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.icon-btn:hover {
+  border-color: var(--border-accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+/* Process step number */
+.step-number {
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  color: var(--accent);
+  opacity: 0.25;
+  line-height: 1;
+}
+
+/* Stat card (Metrics section) */
+.stat-card {
+  border-top: 1px solid var(--border-accent);
+  padding: 2rem 1.5rem;
+}
+.stat-value {
+  font-family: var(--font-display), monospace;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+.stat-desc {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--text-faint);
+  margin-top: 0.35rem;
+}
+
+/* Quote icon wrapper (Testimonials) */
+.quote-icon {
+  color: var(--accent);
+  opacity: 0.4;
+  margin-bottom: 1rem;
+}
+
+/* Avatar circle (Testimonials) */
+.avatar {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Language dot (OpenSource repos) */
+.lang-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Scroll progress bar */
+.scroll-bar {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 100%;
+  background: var(--accent);
+  z-index: 1000;
+  transform-origin: left;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  position: relative;
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: border-color 0.2s, color 0.2s;
+}
+.theme-toggle:hover {
+  border-color: var(--border-accent);
+  color: var(--accent);
+}
+
+/* Nav link */
+.nav-link {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+.nav-link:hover { color: var(--text); }
+
+/* Mobile dropdown */
+.mobile-menu {
+  position: absolute;
+  top: calc(100% + 8px); right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.75rem;
+  min-width: 160px;
+}
+.mobile-menu-item {
+  display: block;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.mobile-menu-item:hover {
+  color: var(--text);
+  background: var(--bg-tertiary);
+}
+
+/* Footer social links */
+.social-link {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  color: var(--text-faint);
+  padding: 0.3rem 0.65rem;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+.social-link-github:hover { color: #ffffff; border-color: #ffffff; }
+.social-link-hashnode:hover { color: #2962FF; border-color: #2962FF; }
+.social-link-dev:hover { color: #ffffff; border-color: #ffffff; }
+
+/* Inline action buttons (Now, AvailabilityBadge) */
+.action-btn-primary {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--btn-primary-text);
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 0.4rem 0.65rem;
+  text-decoration: none;
+  transition: background 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.action-btn-primary:hover {
+  background: #6ee79a;
+  box-shadow: 0 0 14px rgba(74,222,128,0.35);
+}
+/* In light mode the hover uses the darker accent */
+[data-theme="light"] .action-btn-primary:hover {
+  background: #15803d;
+  box-shadow: 0 0 14px rgba(22,163,74,0.3);
+}
+
+.action-btn-ghost {
+  flex: 1;
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.35rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.4rem 0.65rem;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.action-btn-ghost:hover {
+  border-color: rgba(240,237,230,0.25);
+  color: var(--text);
+}
+
+/* Hero pill badge */
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono), monospace; font-size: 0.75rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
+  background: var(--bg-secondary); border: 1px solid var(--border);
+  border-radius: 20px; padding: 0.35rem 0.9rem;
+}
+
+/* Hero name chip */
+.hero-name-chip {
+  position: absolute; bottom: 35%; right: 1rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.55rem 0.85rem;
+  backdrop-filter: blur(20px);
+  z-index: 4;
+}
+
+/* AI badge (About section) */
+.ai-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--border-accent);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+}
+
+/* Section divider */
+.section-border { border-top: 1px solid var(--border); }
+
+/* Timestamp comment */
+.timestamp-comment {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  color: var(--text-faint);
+}
+
+/* Marquee item */
+.marquee-item {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.6rem; white-space: nowrap;
+}
+.marquee-dot {
+  display: inline-block; width: 3px; height: 3px;
+  border-radius: 50%; opacity: 0.5;
+}
+
+/* Scroll hint */
+.scroll-hint-text {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ── Hero decorative overlays ── */
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+.hero-vignette {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 80% at 30% 50%, transparent 10%, var(--bg) 90%);
+  pointer-events: none;
+}
+.hero-accent-line {
+  position: absolute; left: 0; top: 10%; bottom: 10%; width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--accent) 40%, transparent);
+  opacity: 0.4;
+  z-index: 2;
+}
+.hero-fade-bottom {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 40%;
+  background: linear-gradient(to top, var(--bg) 25%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-fade-top {
+  position: absolute; top: 0; left: 0; right: 0; height: 30%;
+  background: linear-gradient(to bottom, var(--bg) 0%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-fade-left {
+  position: absolute; top: 0; left: 0; bottom: 0; width: 30%;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-fade-right {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 20%;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+  pointer-events: none; z-index: 1;
+}
+.hero-glow-bg {
+  position: absolute; inset: -10% -5%;
+  background: radial-gradient(ellipse 70% 60% at 60% 50%, rgba(74,222,128,0.12) 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+.hero-scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--text-faint), transparent);
+}
+
+/* ── Heading size classes ── */
+.hero-heading {
+  font-size: clamp(2.5rem, 4.5vw, 5.25rem);
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+.section-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+.contact-heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+/* Close button in AvailabilityBadge */
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  font-size: 0.875rem;
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.close-btn:hover {
+  color: var(--text);
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-family: var(--font-mono), monospace;
+}
+
+/* Nav logo */
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
