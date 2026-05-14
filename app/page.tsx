@@ -38,15 +38,15 @@ export default function Home() {
         <Hero />
         <Marquee />
         <AICallout />
-        <Metrics />
+        {/* <Metrics /> */}
         <Work />
         <Process />
         <About />
         <TechStack />
         <Timeline />
         <Testimonials />
-        <OpenSource />
-        <BlogPosts />
+        {/* <OpenSource />
+        <BlogPosts /> */}
         <Now />
         <Contact />
       </main>

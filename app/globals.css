@@ -701,7 +701,7 @@ body {
 /* Nav link */
 .nav-link {
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
+  font-size: 1rem;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   transition: color 0.2s ease;
@@ -721,7 +721,7 @@ body {
 .mobile-menu-item {
   display: block;
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem; letter-spacing: 0.08em;
+  font-size: 1rem; letter-spacing: 0.08em;
   color: var(--text-muted);
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
@@ -740,14 +740,16 @@ body {
   border-radius: 5px;
   border: 1px solid var(--border);
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem; letter-spacing: 0.08em;
+  font-size: 1rem; letter-spacing: 0.08em;
   text-decoration: none;
   transition: color 0.2s, border-color 0.2s;
 }
 .social-link-github:hover { color: #ffffff; border-color: #ffffff; }
 .social-link-hashnode:hover { color: #2962FF; border-color: #2962FF; }
 .social-link-dev:hover { color: #ffffff; border-color: #ffffff; }
-
+[data-theme="light"] .social-link-github:hover,
+[data-theme="light"] .social-link-hashnode:hover,
+[data-theme="light"] .social-link-dev:hover { color: var(--text); border-color: var(--border); }
 /* Inline action buttons (Now, AvailabilityBadge) */
 .action-btn-primary {
   flex: 1;
@@ -765,12 +767,14 @@ body {
 }
 .action-btn-primary:hover {
   background: #6ee79a;
-  box-shadow: 0 0 14px rgba(74,222,128,0.35);
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+  transform: translateY(-1px);
 }
 /* In light mode the hover uses the darker accent */
 [data-theme="light"] .action-btn-primary:hover {
-  background: #15803d;
-  box-shadow: 0 0 14px rgba(22,163,74,0.3);
+  background: #6ee79a;
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px #4ade804d;
 }
 
 .action-btn-ghost {
@@ -790,6 +794,7 @@ body {
 .action-btn-ghost:hover {
   border-color: rgba(240,237,230,0.25);
   color: var(--text);
+  transform: translateY(-1px);
 }
 
 /* Hero pill badge */
