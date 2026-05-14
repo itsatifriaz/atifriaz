@@ -5,6 +5,18 @@ import { useRef } from "react";
 
 const contactLinks = [
   {
+    label: "Schedule a Call",
+    href: "https://cal.com/iamatifriaz",
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
+        <path d="M1 5.5h12M4.5 1v2.5M9.5 1v2.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+        <path d="M4 8h1.5M6.5 8H8M9.5 8H11M4 10.5h1.5M6.5 10.5H8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
+      </svg>
+    ),
+    primary: true,
+  },
+  {
     label: "Email Me",
     href: "mailto:atifriaz.se@gmail.com",
     icon: (
@@ -18,7 +30,7 @@ const contactLinks = [
         />
       </svg>
     ),
-    primary: true,
+    primary: false,
   },
   {
     label: "LinkedIn",

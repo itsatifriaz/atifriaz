@@ -36,7 +36,7 @@ export default function AvailabilityBadge() {
     <AnimatePresence>
       {show && (
         <motion.a
-          href="mailto:atifriaz.se@gmail.com"
+          href="https://cal.com/iamatifriaz"
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 12 }}
@@ -58,7 +58,9 @@ export default function AvailabilityBadge() {
             textDecoration: "none",
             maxWidth: "260px",
           }}
-          aria-label="Available for hire — email atifriaz.se@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Available for hire — book a call on Cal.com"
         >
           {/* Pulse dot */}
           <span
@@ -98,7 +100,7 @@ export default function AvailabilityBadge() {
                 marginTop: "0.15rem",
               }}
             >
-              Open to remote · atifriaz.se@gmail.com
+              Open to remote · Book a call →
             </p>
           </div>
 
