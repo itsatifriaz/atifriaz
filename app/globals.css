@@ -19,22 +19,53 @@
   color-scheme: dark;
 }
 
-/* ── Light theme ── */
+/* ── Light theme v2 ── */
 [data-theme="light"] {
-  --bg: #f5f4f0;
-  --bg-secondary: #edecea;
-  --bg-tertiary: #e4e2de;
-  --bg-glass: rgba(245, 244, 240, 0.88);
-  --text: #0f0e0c;
-  --text-muted: #4a4845;
-  --text-faint: #8a8785;
-  --accent: #16803d;
-  --accent-dim: rgba(22, 128, 61, 0.1);
-  --accent-glow: rgba(22, 128, 61, 0.2);
-  --border: rgba(10, 10, 10, 0.1);
-  --border-accent: rgba(22, 128, 61, 0.3);
+  /* Canvas: warm stone — not paper-flat, not cold white */
+  --bg: #f6f5f1;
+  /* Cards float *above* the canvas in pure white — creates real depth */
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0eeea;
+  --bg-glass: rgba(246, 245, 241, 0.92);
+  /* Typography: warm near-black, not cold #000 */
+  --text: #1c1917;
+  --text-muted: #44403c;
+  --text-faint: #a8a29e;
+  /* Accent: green-600, passes WCAG AA on white */
+  --accent: #16a34a;
+  --accent-dim: rgba(22, 163, 74, 0.09);
+  --accent-glow: rgba(22, 163, 74, 0.18);
+  --border: rgba(28, 25, 23, 0.09);
+  --border-accent: rgba(22, 163, 74, 0.4);
   --btn-primary-text: #ffffff;
+  /* Shadows only exist in light mode — add depth that dark mode doesn't need */
+  --shadow-card: 0 1px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 6px 24px rgba(22, 163, 74, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   color-scheme: light;
+}
+
+/* Dark mode has no shadows — panels are separated by bg color alone */
+[data-theme="dark"],
+:root {
+  --shadow-card: none;
+  --shadow-card-hover: none;
+  --shadow-sm: none;
+}
+
+/* Light-mode card enhancements */
+[data-theme="light"] .work-card {
+  box-shadow: var(--shadow-card);
+}
+[data-theme="light"] .work-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-3px);
+}
+[data-theme="light"] .stack-group {
+  box-shadow: var(--shadow-card);
+}
+[data-theme="light"] .stack-group.ai-group {
+  box-shadow: var(--shadow-card);
 }
 
 /* ── Smooth theme transition ── */
