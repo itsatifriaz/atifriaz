@@ -33,7 +33,7 @@ export default function Nav() {
         borderBottom: scrolled ? "1px solid var(--border)" : "none",
       }}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <nav aria-label="Main navigation" className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <a
           href="#"
@@ -99,7 +99,9 @@ function MobileMenu() {
     <div className="md:hidden relative">
       <button
         onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
+        aria-label={open ? "Close menu" : "Open menu"}
+        aria-expanded={open}
+        aria-controls="mobile-nav-menu"
         style={{
           background: "transparent",
           border: "1px solid var(--border)",
@@ -115,6 +117,8 @@ function MobileMenu() {
       </button>
       {open && (
         <motion.div
+          id="mobile-nav-menu"
+          role="menu"
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2 }}
@@ -133,6 +137,7 @@ function MobileMenu() {
             <a
               key={link.href}
               href={link.href}
+              role="menuitem"
               onClick={() => setOpen(false)}
               style={{
                 display: "block",

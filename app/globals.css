@@ -312,3 +312,45 @@ body {
     cursor: pointer;
   }
 }
+
+/* ── Skip link ── */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: #0a0a0a;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ── Keyboard focus ring (only on keyboard navigation) ── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Respect reduced-motion system preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -21,10 +21,13 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <ScrollProgress />
       <CustomCursor />
       <Nav />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <Marquee />
         <AICallout />

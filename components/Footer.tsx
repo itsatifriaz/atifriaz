@@ -46,6 +46,7 @@ const blogs = [
 export default function Footer() {
   return (
     <footer
+      aria-label="Site footer"
       style={{
         borderTop: "1px solid var(--border)",
         padding: "1.75rem 0",
