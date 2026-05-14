@@ -701,7 +701,7 @@ body {
 /* Nav link */
 .nav-link {
   font-family: var(--font-mono), monospace;
-  font-size: 1rem;
+  font-size: 0.85rem;
   letter-spacing: 0.08em;
   color: var(--text-muted);
   transition: color 0.2s ease;
@@ -721,7 +721,7 @@ body {
 .mobile-menu-item {
   display: block;
   font-family: var(--font-mono), monospace;
-  font-size: 1rem; letter-spacing: 0.08em;
+  font-size: 0.85rem; letter-spacing: 0.08em;
   color: var(--text-muted);
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
@@ -740,7 +740,7 @@ body {
   border-radius: 5px;
   border: 1px solid var(--border);
   font-family: var(--font-mono), monospace;
-  font-size: 1rem; letter-spacing: 0.08em;
+  font-size: 0.85rem; letter-spacing: 0.08em;
   text-decoration: none;
   transition: color 0.2s, border-color 0.2s;
 }
@@ -1016,7 +1016,7 @@ body {
 /* Section mono label (0.06em tracking) */
 .mono-xs-narrow {
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 0.06em;
 }
 
