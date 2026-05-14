@@ -198,16 +198,28 @@ export default function Hero() {
               }}
             />
 
-            {/* Seamless bottom fade into page bg */}
+            {/* Seamless bottom fade */}
             <div aria-hidden="true" style={{
               position: "absolute", bottom: 0, left: 0, right: 0, height: "40%",
               background: "linear-gradient(to top, var(--bg) 25%, transparent 100%)",
               pointerEvents: "none", zIndex: 1,
             }} />
+            {/* Top fade */}
+            <div aria-hidden="true" style={{
+              position: "absolute", top: 0, left: 0, right: 0, height: "30%",
+              background: "linear-gradient(to bottom, var(--bg) 0%, transparent 100%)",
+              pointerEvents: "none", zIndex: 1,
+            }} />
             {/* Left edge blends into text column */}
             <div aria-hidden="true" style={{
-              position: "absolute", top: 0, left: 0, bottom: 0, width: "35%",
+              position: "absolute", top: 0, left: 0, bottom: 0, width: "30%",
               background: "linear-gradient(to right, var(--bg) 0%, transparent 100%)",
+              pointerEvents: "none", zIndex: 1,
+            }} />
+            {/* Right edge fade */}
+            <div aria-hidden="true" style={{
+              position: "absolute", top: 0, right: 0, bottom: 0, width: "20%",
+              background: "linear-gradient(to left, var(--bg) 0%, transparent 100%)",
               pointerEvents: "none", zIndex: 1,
             }} />
           </div>
@@ -316,11 +328,11 @@ export default function Hero() {
           z-index: 0;
         }
 
-        /* ── Desktop: side-by-side, equal columns ── */
+        /* ── Desktop: text-heavy left, photo right ── */
         @media (min-width: 900px) {
           .hero-inner {
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1.6fr 1fr;
+            gap: 2rem;
           }
 
           .hero-photo-wrap {
