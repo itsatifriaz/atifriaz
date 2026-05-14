@@ -76,14 +76,25 @@ export default function Nav() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <a
-          href="mailto:atifriaz.se@gmail.com"
-          className="hidden md:inline-flex items-center gap-2 btn-ghost"
-          style={{ padding: "0.45rem 1rem", fontSize: "0.75rem" }}
-        >
-          Get in touch
-        </a>
+        {/* CTAs */}
+        <div className="hidden md:flex items-center gap-2">
+          <a
+            href="https://cal.com/iamatifriaz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary"
+            style={{ padding: "0.45rem 1rem", fontSize: "0.75rem" }}
+          >
+            Book a Call
+          </a>
+          <a
+            href="mailto:atifriaz.se@gmail.com"
+            className="btn-ghost"
+            style={{ padding: "0.45rem 1rem", fontSize: "0.75rem" }}
+          >
+            Email
+          </a>
+        </div>
 
         {/* Mobile menu button */}
         <MobileMenu />

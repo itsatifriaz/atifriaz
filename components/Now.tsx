@@ -9,7 +9,7 @@ const statusRows = [
   { label: "learning", value: "LLM context engineering & agent patterns" },
   { label: "stack", value: "Next.js 15 · Prisma · Tailwind v4 · Claude API" },
   { label: "reading", value: "Software Architecture: The Hard Parts — Ford & Richards" },
-  { label: "available", value: "Yes — remote roles, DM me" },
+  { label: "available", value: "Yes — remote roles" },
 ];
 
 const focusCards = [
@@ -199,6 +199,48 @@ export default function Now() {
                   </span>
                 </motion.div>
               ))}
+
+              {/* Action links */}
+              <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "0.25rem" }}>
+                <a
+                  href="https://cal.com/iamatifriaz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: "0.3rem",
+                    fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
+                    fontWeight: 600, color: "#0a0a0a", background: "var(--accent)",
+                    border: "1px solid var(--accent)", borderRadius: "4px",
+                    padding: "0.35rem 0.7rem", textDecoration: "none",
+                    transition: "background 0.2s, box-shadow 0.2s",
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#6ee79a"; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = "var(--accent)"; }}
+                >
+                  Book a Call
+                </a>
+                <a
+                  href="mailto:atifriaz.se@gmail.com"
+                  style={{
+                    display: "inline-flex", alignItems: "center", gap: "0.3rem",
+                    fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
+                    color: "var(--text-muted)", background: "transparent",
+                    border: "1px solid var(--border)", borderRadius: "4px",
+                    padding: "0.35rem 0.7rem", textDecoration: "none",
+                    transition: "border-color 0.2s, color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(240,237,230,0.25)";
+                    (e.currentTarget as HTMLElement).style.color = "var(--text)";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = "var(--border)";
+                    (e.currentTarget as HTMLElement).style.color = "var(--text-muted)";
+                  }}
+                >
+                  Email
+                </a>
+              </div>
 
               {/* Blinking cursor */}
               <div
