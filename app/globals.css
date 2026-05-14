@@ -22,7 +22,7 @@
   --color-text-muted: var(--text-muted);
   --color-text-faint: var(--text-faint);
   --color-accent: var(--accent);
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-geist-pixel-circle);
   --font-mono: var(--font-jetbrains);
   --font-sans: var(--font-inter);
 }
@@ -74,7 +74,7 @@ body {
 }
 
 .font-display {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display), "Geist Mono", ui-monospace, SFMono-Regular, "Roboto Mono", Menlo, Monaco, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
 }
 .font-mono-custom {
   font-family: var(--font-mono), "Courier New", monospace;

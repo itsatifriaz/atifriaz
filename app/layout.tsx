@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Playfair_Display } from "next/font/google";
 import { JetBrains_Mono } from "next/font/google";
+import { GeistPixelCircle } from "geist/font/pixel";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -225,7 +218,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} ${jetbrains.variable}`}
+      className={`${inter.variable} ${jetbrains.variable} ${GeistPixelCircle.variable}`}
     >
       <head>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%230a0a0a'/><text x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='700' fill='%234ade80' text-anchor='middle'>AR</text></svg>" />
