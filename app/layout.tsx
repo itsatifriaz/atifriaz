@@ -222,6 +222,8 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='8' fill='%230a0a0a'/><text x='50' y='68' font-family='Georgia,serif' font-size='42' font-weight='700' fill='%234ade80' text-anchor='middle'>AR</text></svg>" />
+        {/* Anti-flash: sets data-theme before React hydrates to prevent FOSWT */}
+        <script dangerouslySetInnerHTML={{ __html: `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('no-transitions');requestAnimationFrame(function(){document.documentElement.classList.remove('no-transitions');});}catch(e){}})();` }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

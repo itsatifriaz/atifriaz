@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -26,9 +27,7 @@ export default function Nav() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        background: scrolled
-          ? "rgba(10, 10, 10, 0.85)"
-          : "transparent",
+        background: scrolled ? "var(--bg-glass)" : "transparent",
         backdropFilter: scrolled ? "blur(16px)" : "none",
         borderBottom: scrolled ? "1px solid var(--border)" : "none",
       }}
@@ -76,8 +75,9 @@ export default function Nav() {
           ))}
         </ul>
 
-        {/* CTAs */}
+        {/* CTAs + toggle */}
         <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <a
             href="https://cal.com/iamatifriaz"
             target="_blank"
@@ -96,8 +96,11 @@ export default function Nav() {
           </a>
         </div>
 
-        {/* Mobile menu button */}
-        <MobileMenu />
+        {/* Mobile: toggle + menu */}
+        <div className="md:hidden flex items-center gap-2">
+          <ThemeToggle />
+          <MobileMenu />
+        </div>
       </nav>
     </motion.header>
   );

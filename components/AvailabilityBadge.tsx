@@ -40,7 +40,7 @@ export default function AvailabilityBadge() {
             bottom: "2rem",
             right: "1.5rem",
             zIndex: 100,
-            background: "rgba(10,10,10,0.9)",
+            background: "var(--bg-glass)",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(20px)",
             border: "1px solid var(--border-accent)",

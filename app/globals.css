@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
-:root {
+/* ── Dark theme (default) ── */
+:root,
+[data-theme="dark"] {
   --bg: #0a0a0a;
   --bg-secondary: #111111;
   --bg-tertiary: #161616;
+  --bg-glass: rgba(10, 10, 10, 0.85);
   --text: #f0ede6;
   --text-muted: #b8b5ae;
   --text-faint: #7a7773;
@@ -12,6 +15,37 @@
   --accent-glow: rgba(74, 222, 128, 0.25);
   --border: rgba(240, 237, 230, 0.08);
   --border-accent: rgba(74, 222, 128, 0.3);
+  --btn-primary-text: #0a0a0a;
+  color-scheme: dark;
+}
+
+/* ── Light theme ── */
+[data-theme="light"] {
+  --bg: #f5f4f0;
+  --bg-secondary: #edecea;
+  --bg-tertiary: #e4e2de;
+  --bg-glass: rgba(245, 244, 240, 0.88);
+  --text: #0f0e0c;
+  --text-muted: #4a4845;
+  --text-faint: #8a8785;
+  --accent: #16803d;
+  --accent-dim: rgba(22, 128, 61, 0.1);
+  --accent-glow: rgba(22, 128, 61, 0.2);
+  --border: rgba(10, 10, 10, 0.1);
+  --border-accent: rgba(22, 128, 61, 0.3);
+  --btn-primary-text: #ffffff;
+  color-scheme: light;
+}
+
+/* ── Smooth theme transition ── */
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.15s ease,
+    box-shadow 0.25s ease;
 }
 
 @theme inline {
@@ -31,6 +65,13 @@
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+/* Disable theme transitions during initial paint and for reduced-motion users */
+.no-transitions *,
+.no-transitions *::before,
+.no-transitions *::after {
+  transition: none !important;
 }
 
 html {
@@ -270,7 +311,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   background: var(--accent);
-  color: #0a0a0a;
+  color: var(--btn-primary-text);
   font-weight: 600;
   font-size: 0.875rem;
   padding: 0.75rem 1.75rem;

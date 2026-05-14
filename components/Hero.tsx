@@ -233,7 +233,7 @@ export default function Hero() {
               position: "absolute",
               bottom: "35%",
               right: "1rem",
-              background: "rgba(10,10,10,0.82)",
+              background: "var(--bg-glass)",
               border: "1px solid var(--border)",
               borderRadius: "6px",
               padding: "0.55rem 0.85rem",
