@@ -5,8 +5,8 @@
   --bg-secondary: #111111;
   --bg-tertiary: #161616;
   --text: #f0ede6;
-  --text-muted: #8a8780;
-  --text-faint: #4a4845;
+  --text-muted: #b8b5ae;
+  --text-faint: #7a7773;
   --accent: #4ade80;
   --accent-dim: rgba(74, 222, 128, 0.12);
   --accent-glow: rgba(74, 222, 128, 0.25);
@@ -98,7 +98,7 @@ body {
 
 .section-label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent);
@@ -170,7 +170,7 @@ body {
 .tag {
   display: inline-block;
   font-family: var(--font-mono), monospace;
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   color: var(--text-muted);
   background: var(--bg-tertiary);

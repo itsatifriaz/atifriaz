@@ -136,7 +136,7 @@ export default function Timeline() {
                     <span
                       style={{
                         fontFamily: "var(--font-jetbrains), monospace",
-                        fontSize: "0.6875rem",
+                        fontSize: "0.75rem",
                         letterSpacing: "0.08em",
                         color: exp.current ? "var(--accent)" : "var(--text-faint)",
                       }}
@@ -147,7 +147,7 @@ export default function Timeline() {
                       <span
                         style={{
                           fontFamily: "var(--font-jetbrains), monospace",
-                          fontSize: "0.55rem",
+                          fontSize: "0.75rem",
                           letterSpacing: "0.12em",
                           textTransform: "uppercase",
                           color: "var(--accent)",
@@ -183,7 +183,7 @@ export default function Timeline() {
                   <p
                     style={{
                       fontFamily: "var(--font-jetbrains), monospace",
-                      fontSize: "0.6875rem",
+                      fontSize: "0.75rem",
                       color: "var(--text-faint)",
                       marginTop: "0.2rem",
                     }}

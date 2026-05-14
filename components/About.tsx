@@ -108,7 +108,7 @@ export default function About() {
                   alignItems: "center",
                   gap: "0.4rem",
                   fontFamily: "var(--font-jetbrains), monospace",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.12em",
                   textTransform: "uppercase",
                   color: "var(--accent)",

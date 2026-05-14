@@ -148,7 +148,7 @@ function ProjectCard({
           <span
             style={{
               fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.6rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               color: "var(--accent)",

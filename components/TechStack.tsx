@@ -109,7 +109,7 @@ export default function TechStack() {
                 <p
                   style={{
                     fontFamily: "var(--font-jetbrains), monospace",
-                    fontSize: "0.6rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.18em",
                     textTransform: "uppercase",
                     color: "var(--accent)",
@@ -122,7 +122,7 @@ export default function TechStack() {
               <h3
                 style={{
                   fontFamily: "var(--font-jetbrains), monospace",
-                  fontSize: "0.6875rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   color: group.ai ? "var(--accent)" : "var(--text-muted)",

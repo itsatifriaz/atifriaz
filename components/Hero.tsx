@@ -86,7 +86,7 @@ export default function Hero() {
           <FadeUp delay={0} style={{ marginBottom: "2rem" }}>
             <span style={{
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.6875rem",
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
               letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--text-muted)",
               background: "var(--bg-secondary)", border: "1px solid var(--border)",
               borderRadius: "20px", padding: "0.35rem 0.9rem",
@@ -242,14 +242,14 @@ export default function Hero() {
             }}
           >
             <div style={{
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.6rem",
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
               letterSpacing: "0.12em", textTransform: "uppercase",
               color: "var(--accent)", marginBottom: "0.2rem",
             }}>
               Atif Riaz
             </div>
             <div style={{
-              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.55rem",
+              fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
               letterSpacing: "0.08em", color: "var(--text-faint)",
             }}>
               Lead Frontend Engineer
@@ -269,7 +269,7 @@ export default function Hero() {
         }}
       >
         <span style={{
-          fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.6rem",
+          fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
           letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--text-faint)",
         }}>scroll</span>
         <div style={{

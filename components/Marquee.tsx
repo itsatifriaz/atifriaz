@@ -59,7 +59,7 @@ export default function Marquee() {
             key={i}
             style={{
               fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.6875rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               color: AI_ITEMS.has(item) ? "var(--accent)" : "var(--text-faint)",

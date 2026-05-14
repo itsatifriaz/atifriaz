@@ -65,7 +65,7 @@ export default function Footer() {
         <span
           style={{
             fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: "0.6875rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.06em",
             color: "var(--text-faint)",
           }}
@@ -79,7 +79,7 @@ export default function Footer() {
           <span
             style={{
               fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.6rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               color: "var(--text-faint)",
@@ -104,7 +104,7 @@ export default function Footer() {
                 borderRadius: "5px",
                 border: "1px solid var(--border)",
                 fontFamily: "var(--font-jetbrains), monospace",
-                fontSize: "0.6rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.08em",
                 textDecoration: "none",
                 transition: "color 0.2s, border-color 0.2s",
@@ -127,7 +127,7 @@ export default function Footer() {
         <span
           style={{
             fontFamily: "var(--font-jetbrains), monospace",
-            fontSize: "0.6875rem",
+            fontSize: "0.75rem",
             letterSpacing: "0.06em",
             color: "var(--text-faint)",
             display: "flex",

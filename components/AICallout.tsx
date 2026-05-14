@@ -74,7 +74,7 @@ export default function AICallout() {
             }} />
             <span style={{
               fontFamily: "var(--font-jetbrains), monospace",
-              fontSize: "0.65rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               color: "var(--accent)",
@@ -114,7 +114,7 @@ export default function AICallout() {
                 borderRadius: "6px",
                 background: "var(--bg-secondary)",
                 fontFamily: "var(--font-jetbrains), monospace",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.06em",
                 color: "var(--text-muted)",
                 cursor: "default",
