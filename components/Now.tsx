@@ -209,7 +209,7 @@ export default function Now() {
                   style={{
                     display: "inline-flex", alignItems: "center", gap: "0.3rem",
                     fontFamily: "var(--font-jetbrains), monospace", fontSize: "0.75rem",
-                    fontWeight: 600, color: "#0a0a0a", background: "var(--accent)",
+                    fontWeight: 600, color: "var(--btn-primary-text)", background: "var(--accent)",
                     border: "1px solid var(--accent)", borderRadius: "4px",
                     padding: "0.35rem 0.7rem", textDecoration: "none",
                     transition: "background 0.2s, box-shadow 0.2s",

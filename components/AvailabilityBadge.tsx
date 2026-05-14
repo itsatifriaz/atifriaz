@@ -122,7 +122,7 @@ export default function AvailabilityBadge() {
                 fontFamily: "var(--font-jetbrains), monospace",
                 fontSize: "0.75rem",
                 fontWeight: 600,
-                color: "#0a0a0a",
+                color: "var(--btn-primary-text)",
                 background: "var(--accent)",
                 border: "1px solid var(--accent)",
                 borderRadius: "4px",
